@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <rect width="200" height="60" rx="8" fill="#ffffff"/>
+  <g transform="translate(10, 10)">
+    <rect x="2" y="4" width="30" height="30" rx="6" fill="#1E293B"/>
+    <text x="17" y="24" font-family="'Arial', sans-serif" font-size="16" font-weight="900" fill="#F97316" text-anchor="middle">eP</text>
+    <text x="40" y="21" font-family="'Pretendard', sans-serif" font-size="14" font-weight="900" fill="#1E293B">이퍼블릭</text>
+    <text x="40" y="32" font-family="'Arial', sans-serif" font-size="9" font-weight="700" fill="#F97316">e-Public</text>
+  </g>
+</svg>

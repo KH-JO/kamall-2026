@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { conferenceConfig } from '@/config/conferenceConfig';
-import { Users, Award, HeartHandshake, ShieldCheck } from 'lucide-react';
+import { Users, Award, HeartHandshake, ShieldCheck, ExternalLink } from 'lucide-react';
 
 export default function CommitteeSection() {
   const { committee, sponsors } = conferenceConfig;
@@ -13,12 +13,12 @@ export default function CommitteeSection() {
         
         {/* Section Header (Compact) */}
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-100 border border-purple-200 text-purple-900 text-xs font-bold mb-2">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-100 border border-purple-200 text-purple-900 text-xs font-bold mb-2 shadow-2xs">
             <Users className="w-3.5 h-3.5 text-purple-700" />
             ORGANIZING COMMITTEE & SPONSORS
           </div>
           <h2 className="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight">
-            조직위원회 및 후원 파트너
+            조직위원회 및 후원·협력 기업
           </h2>
         </div>
 
@@ -74,26 +74,51 @@ export default function CommitteeSection() {
           </div>
         </div>
 
-        {/* Sponsors Grid */}
+        {/* Sponsors Grid (With Logos and Correct Tiers) */}
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-6">
-            <h3 className="text-lg font-black text-slate-950 flex items-center justify-center gap-2">
+            <h3 className="text-xl font-black text-slate-950 flex items-center justify-center gap-2">
               <HeartHandshake className="w-5 h-5 text-purple-700" />
-              <span>후원 및 협력 기업</span>
+              <span>후원 및 협력 기관·기업</span>
             </h3>
+            <p className="text-xs text-slate-500 mt-1">
+              한국멀티미디어언어교육학회 2026 연례학술대회를 함께 후원하고 응원해주시는 파트너입니다.
+            </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3.5">
             {sponsors.map((sp, idx) => (
               <div
                 key={idx}
-                className="bg-white border border-slate-200 rounded-2xl p-3.5 flex flex-col items-center justify-center text-center hover:border-purple-300 shadow-2xs transition-all"
+                className="bg-white border border-slate-200 rounded-2xl p-4 flex flex-col items-center justify-between text-center hover:border-purple-300 hover:shadow-xs transition-all group"
               >
-                <div className="text-xs font-black text-slate-900 leading-tight">
-                  {sp.name}
+                <div className="w-full h-12 flex items-center justify-center mb-2 px-1">
+                  {sp.logoUrl ? (
+                    <img
+                      src={sp.logoUrl}
+                      alt={sp.name}
+                      className="max-h-10 w-auto object-contain group-hover:scale-105 transition-transform"
+                    />
+                  ) : (
+                    <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-800 font-bold flex items-center justify-center text-xs">
+                      {sp.name.slice(0, 2)}
+                    </div>
+                  )}
                 </div>
-                <div className="text-[10px] text-purple-700 font-semibold mt-1">
-                  {sp.tier}
+
+                <div className="w-full pt-2 border-t border-slate-100">
+                  <div className="text-xs font-black text-slate-900 leading-tight">
+                    {sp.name}
+                  </div>
+                  <div className={`text-[10px] font-extrabold mt-1 px-2 py-0.5 rounded-full inline-block ${
+                    sp.tier === '공동 주관' 
+                      ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
+                      : sp.tier === '학술 후원'
+                        ? 'bg-blue-50 text-blue-800 border border-blue-200'
+                        : 'bg-purple-50 text-purple-800 border border-purple-200'
+                  }`}>
+                    {sp.tier}
+                  </div>
                 </div>
               </div>
             ))}

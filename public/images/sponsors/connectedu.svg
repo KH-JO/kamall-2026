@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <rect width="200" height="60" rx="8" fill="#ffffff"/>
+  <g transform="translate(10, 10)">
+    <rect x="2" y="4" width="30" height="30" rx="8" fill="#EA580C"/>
+    <circle cx="12" cy="14" r="3" fill="#ffffff"/>
+    <circle cx="22" cy="24" r="3" fill="#ffffff"/>
+    <line x1="12" y1="14" x2="22" y2="24" stroke="#ffffff" stroke-width="2"/>
+    <text x="42" y="21" font-family="'Pretendard', sans-serif" font-size="13.5" font-weight="900" fill="#9A3412">커넥트에듀</text>
+    <text x="42" y="32" font-family="'Arial', sans-serif" font-size="9" font-weight="700" fill="#EA580C">ConnectEdu</text>
+  </g>
+</svg>

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { conferenceConfig } from '@/config/conferenceConfig';
-import { Bot, Network, Sparkles, Quote, Award, Sparkle } from 'lucide-react';
+import { Bot, Network, Sparkles, Quote, Award } from 'lucide-react';
 
 export default function OverviewSection() {
   const { welcomeMessage, chairWelcomeMessage, meta } = conferenceConfig;
@@ -77,7 +77,7 @@ export default function OverviewSection() {
           })}
         </div>
 
-        {/* 1. President Welcome Message Card (신동광 회장님) */}
+        {/* 1. President Welcome Message Card (신동광 회장님 - 전체 사진 노출 & 깔끔한 마무리) */}
         <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm relative mb-10">
           <div className="absolute top-6 right-6 text-slate-300 opacity-30 pointer-events-none hidden sm:block">
             <Quote className="w-24 h-24" />
@@ -85,13 +85,13 @@ export default function OverviewSection() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
-            {/* President Photo & Profile */}
+            {/* President Photo & Profile (Full Face Visible, No Crop) */}
             <div className="lg:col-span-4 flex flex-col items-center text-center lg:border-r border-slate-200 lg:pr-8">
-              <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-3xl overflow-hidden border-3 border-purple-600 shadow-lg p-1 bg-white mb-4 flex-shrink-0">
+              <div className="w-40 sm:w-48 aspect-[3/4] rounded-3xl overflow-hidden border-2 border-purple-400 shadow-md p-1 bg-white mb-4 flex-shrink-0 flex items-center justify-center">
                 <img
                   src={welcomeMessage.imageUrl}
                   alt={welcomeMessage.presidentName}
-                  className="w-full h-full object-cover rounded-2xl"
+                  className="w-full h-full object-contain object-top rounded-2xl bg-slate-50"
                 />
               </div>
               <h4 className="text-xl font-black text-slate-950">{welcomeMessage.presidentName}</h4>
@@ -116,16 +116,15 @@ export default function OverviewSection() {
                 </p>
               ))}
               
-              <div className="pt-4 mt-4 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-slate-500 font-semibold gap-2">
-                <div className="text-slate-800 font-bold">한국멀티미디어언어교육학회장 {welcomeMessage.presidentName}</div>
-                <div className="text-purple-800 font-bold">2026년 10월 17일(토) @ 건국대학교 글로컬캠퍼스</div>
+              <div className="pt-4 mt-4 border-t border-slate-200 flex items-center justify-start text-xs text-slate-800 font-bold">
+                <div>한국멀티미디어언어교육학회장 {welcomeMessage.presidentName}</div>
               </div>
             </div>
 
           </div>
         </div>
 
-        {/* 2. Conference Chair Welcome Message Card (이혜진 학술대회 위원장님) */}
+        {/* 2. Conference Chair Welcome Message Card (이혜진 학술대회 위원장님 - 전체 사진 노출 & 깔끔한 마무리) */}
         <div className="bg-gradient-to-br from-purple-50/70 via-white to-blue-50/50 border-2 border-purple-200 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm relative">
           <div className="absolute top-6 right-6 text-purple-200 opacity-40 pointer-events-none hidden sm:block">
             <Quote className="w-24 h-24" />
@@ -133,13 +132,13 @@ export default function OverviewSection() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
-            {/* Chair Photo & Profile */}
+            {/* Chair Photo & Profile (Full Face Visible, No Crop) */}
             <div className="lg:col-span-4 flex flex-col items-center text-center lg:border-r border-purple-100 lg:pr-8">
-              <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-3xl overflow-hidden border-3 border-indigo-600 shadow-lg p-1 bg-white mb-4 flex-shrink-0">
+              <div className="w-40 sm:w-48 aspect-[3/4] rounded-3xl overflow-hidden border-2 border-indigo-400 shadow-md p-1 bg-white mb-4 flex-shrink-0 flex items-center justify-center">
                 <img
                   src={chairWelcomeMessage.imageUrl}
                   alt={chairWelcomeMessage.chairName}
-                  className="w-full h-full object-cover rounded-2xl"
+                  className="w-full h-full object-contain object-top rounded-2xl bg-slate-50"
                 />
               </div>
               <h4 className="text-xl font-black text-slate-950">{chairWelcomeMessage.chairName}</h4>
@@ -164,9 +163,8 @@ export default function OverviewSection() {
                 </p>
               ))}
               
-              <div className="pt-4 mt-4 border-t border-purple-100 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-slate-500 font-semibold gap-2">
-                <div className="text-slate-800 font-bold">2026 KAMALL 학술대회 위원장 {chairWelcomeMessage.chairName}</div>
-                <div className="text-indigo-800 font-bold">충주 건국대 글로컬캠퍼스 현장 개최</div>
+              <div className="pt-4 mt-4 border-t border-purple-100 flex items-center justify-start text-xs text-slate-800 font-bold">
+                <div>2026 KAMALL 학술대회 위원장 {chairWelcomeMessage.chairName}</div>
               </div>
             </div>
 

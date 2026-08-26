@@ -2,10 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { conferenceConfig } from '@/config/conferenceConfig';
-import { Calendar, MapPin, Sparkles, ArrowRight, Clock, Train, ZoomIn, X, BookOpen } from 'lucide-react';
+import { Calendar, MapPin, Sparkles, ArrowRight, Clock, Train, ZoomIn, X, BookOpen, ExternalLink } from 'lucide-react';
 
 export default function HeroSection() {
-  const { meta } = conferenceConfig;
+  const { meta, registration } = conferenceConfig;
   const [posterOpen, setPosterOpen] = useState(false);
 
   // D-Day Countdown Calculation
@@ -127,14 +127,16 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Action Buttons */}
+            {/* Action Buttons (Direct Google Form Link) */}
             <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
               <a
-                href="#registration"
+                href={registration.registerFormUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm sm:text-base font-black text-white bg-gradient-to-r from-purple-700 to-blue-600 hover:from-purple-800 hover:to-blue-700 rounded-xl shadow-md shadow-purple-700/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
               >
-                <span>사전 참가 등록하기</span>
-                <ArrowRight className="w-4 h-4" />
+                <span>온라인 사전 참가 등록하기</span>
+                <ExternalLink className="w-4 h-4 text-purple-200" />
               </a>
               <a
                 href="#program"

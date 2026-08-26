@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <rect width="200" height="60" rx="8" fill="#ffffff"/>
+  <g transform="translate(10, 10)">
+    <rect x="2" y="4" width="30" height="30" rx="8" fill="#4F46E5"/>
+    <path d="M 10,12 L 15,12 L 15,17 L 21,17 L 21,12 L 26,12 L 26,26 L 21,26 L 21,21 L 15,21 L 15,26 L 10,26 Z" fill="#ffffff"/>
+    <text x="42" y="21" font-family="'Pretendard', sans-serif" font-size="14" font-weight="900" fill="#312E81">하이퍼러닝</text>
+    <text x="42" y="32" font-family="'Arial', sans-serif" font-size="9" font-weight="700" fill="#4F46E5">HyperLearning</text>
+  </g>
+</svg>

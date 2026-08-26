@@ -436,18 +436,18 @@ export const conferenceConfig = {
     ] as CommitteeMember[],
   },
 
-  // 후원사
+  // 후원사 및 협력 기업 (로고 및 티어 반영)
   sponsors: [
-    { name: "플랭 (Plang)", category: "발표 & 전시 부스 후원", tier: "골드 파트너" },
-    { name: "AIONA-AI 플랫폼", category: "발표 세션 후원", tier: "골드 파트너" },
-    { name: "비긴즈 (Begins)", category: "전시 부스 후원", tier: "실버 파트너" },
-    { name: "하이퍼러닝 (Hyper Learning)", category: "전시 부스 후원", tier: "실버 파트너" },
-    { name: "투폰즈 (TwoPonds)", category: "학술대회 홍보영상 후원", tier: "미디어 파트너" },
-    { name: "커넥트에듀 (Connect Edu)", category: "에듀테크 솔루션 후원", tier: "협력 파트너" },
-    { name: "마이티쳐코리아 (My Teacher Korea)", category: "어학교육 콘텐츠 후원", tier: "협력 파트너" },
-    { name: "ePublic (이퍼블릭)", category: "영어교육 출판 후원", tier: "협력 파트너" },
-    { name: "건국대학교 GLOCAL캠퍼스", category: "행사장 및 인프라 지원", tier: "공동 주관" },
-    { name: "한국연구재단 (NRF)", category: "등재학술지 학술 활동 지원", tier: "학술 후원" },
+    { name: "건국대학교 GLOCAL캠퍼스", tier: "공동 주관", category: "행사장 및 인프라 지원", logoUrl: "/images/sponsors/konkuk.svg" },
+    { name: "한국연구재단 (NRF)", tier: "학술 후원", category: "등재학술지 학술 활동 지원", logoUrl: "/images/sponsors/nrf.svg" },
+    { name: "플랭 (Plang)", tier: "협력 파트너", category: "AI 영어회화 에듀테크", logoUrl: "/images/sponsors/plang.svg" },
+    { name: "AIONA-AI 플랫폼", tier: "협력 파트너", category: "AI 언어교육 플랫폼", logoUrl: "/images/sponsors/aiona.svg" },
+    { name: "비긴즈 (Begins)", tier: "협력 파트너", category: "에듀테크 & 교육 컨설팅", logoUrl: "/images/sponsors/begins.svg" },
+    { name: "하이퍼러닝", tier: "협력 파트너", category: "미래엔 디지털 학습 플랫폼", logoUrl: "/images/sponsors/hyperlearning.svg" },
+    { name: "투폰즈 (TwoPonds)", tier: "협력 파트너", category: "영어교육 전문 출판", logoUrl: "/images/sponsors/twoponds.svg" },
+    { name: "커넥트에듀", tier: "협력 파트너", category: "에듀테크 교육 솔루션", logoUrl: "/images/sponsors/connectedu.svg" },
+    { name: "마이티쳐코리아", tier: "협력 파트너", category: "원어민 화상영어 콘텐츠", logoUrl: "/images/sponsors/myteacher.svg" },
+    { name: "ePublic (이퍼블릭)", tier: "협력 파트너", category: "영어교육 교재 출판", logoUrl: "/images/sponsors/epublic.svg" },
   ],
 
   // 문의처
