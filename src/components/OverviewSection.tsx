@@ -2,10 +2,10 @@
 
 import React from 'react';
 import { conferenceConfig } from '@/config/conferenceConfig';
-import { Bot, Network, Sparkles, Quote, Award } from 'lucide-react';
+import { Bot, Network, Sparkles, Quote, Award, Sparkle } from 'lucide-react';
 
 export default function OverviewSection() {
-  const { welcomeMessage, meta } = conferenceConfig;
+  const { welcomeMessage, chairWelcomeMessage, meta } = conferenceConfig;
 
   const coreThemes = [
     {
@@ -77,8 +77,8 @@ export default function OverviewSection() {
           })}
         </div>
 
-        {/* President Welcome Message Card (With President Photo) */}
-        <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm relative">
+        {/* 1. President Welcome Message Card (신동광 회장님) */}
+        <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm relative mb-10">
           <div className="absolute top-6 right-6 text-slate-300 opacity-30 pointer-events-none hidden sm:block">
             <Quote className="w-24 h-24" />
           </div>
@@ -102,7 +102,7 @@ export default function OverviewSection() {
               </div>
             </div>
 
-            {/* Welcome Greeting Body (Autumn Greeting) */}
+            {/* Welcome Greeting Body */}
             <div className="lg:col-span-8 space-y-4 text-slate-700 text-sm sm:text-base leading-relaxed">
               <div className="text-xs font-bold text-purple-700 tracking-wider uppercase mb-1">
                 PRESIDENT'S WELCOME MESSAGE
@@ -119,6 +119,54 @@ export default function OverviewSection() {
               <div className="pt-4 mt-4 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-slate-500 font-semibold gap-2">
                 <div className="text-slate-800 font-bold">한국멀티미디어언어교육학회장 {welcomeMessage.presidentName}</div>
                 <div className="text-purple-800 font-bold">2026년 10월 17일(토) @ 건국대학교 글로컬캠퍼스</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        {/* 2. Conference Chair Welcome Message Card (이혜진 학술대회 위원장님) */}
+        <div className="bg-gradient-to-br from-purple-50/70 via-white to-blue-50/50 border-2 border-purple-200 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm relative">
+          <div className="absolute top-6 right-6 text-purple-200 opacity-40 pointer-events-none hidden sm:block">
+            <Quote className="w-24 h-24" />
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            {/* Chair Photo & Profile */}
+            <div className="lg:col-span-4 flex flex-col items-center text-center lg:border-r border-purple-100 lg:pr-8">
+              <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-3xl overflow-hidden border-3 border-indigo-600 shadow-lg p-1 bg-white mb-4 flex-shrink-0">
+                <img
+                  src={chairWelcomeMessage.imageUrl}
+                  alt={chairWelcomeMessage.chairName}
+                  className="w-full h-full object-cover rounded-2xl"
+                />
+              </div>
+              <h4 className="text-xl font-black text-slate-950">{chairWelcomeMessage.chairName}</h4>
+              <div className="text-sm font-bold text-indigo-800 mt-1">{chairWelcomeMessage.chairTitle}</div>
+              <div className="text-xs text-slate-600 mt-0.5">{chairWelcomeMessage.affiliation}</div>
+              <div className="mt-3 px-3.5 py-1 rounded-full bg-indigo-100/80 border border-indigo-200 text-[11px] font-bold text-indigo-900">
+                2026 연례학술대회 조직위원회
+              </div>
+            </div>
+
+            {/* Chair Greeting Body */}
+            <div className="lg:col-span-8 space-y-4 text-slate-700 text-sm sm:text-base leading-relaxed">
+              <div className="text-xs font-bold text-indigo-700 tracking-wider uppercase mb-1">
+                CONFERENCE CHAIR'S WELCOME MESSAGE
+              </div>
+              <h3 className="text-xl sm:text-2xl font-black text-slate-950 mb-3">
+                “함께 열어가는 포용적 AI 언어교육의 미래”
+              </h3>
+              {chairWelcomeMessage.paragraphs.map((p, idx) => (
+                <p key={idx} className="text-slate-700 leading-relaxed">
+                  {p}
+                </p>
+              ))}
+              
+              <div className="pt-4 mt-4 border-t border-purple-100 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-slate-500 font-semibold gap-2">
+                <div className="text-slate-800 font-bold">2026 KAMALL 학술대회 위원장 {chairWelcomeMessage.chairName}</div>
+                <div className="text-indigo-800 font-bold">충주 건국대 글로컬캠퍼스 현장 개최</div>
               </div>
             </div>
 

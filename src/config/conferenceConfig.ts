@@ -19,32 +19,25 @@ export interface ImportantDate {
   description: string;
 }
 
-export interface ProgramSession {
-  time: string;
+export interface PaperPresentation {
   title: string;
-  location: string;
-  type: 'keynote' | 'plenary' | 'oral' | 'poster' | 'workshop' | 'panel' | 'ceremony' | 'break';
-  speakers?: string;
-  chair?: string;
-  description?: string;
+  presenter: string;
+  discussant: string;
 }
 
-export interface ProgramTrack {
-  trackName: string;
-  sessions: ProgramSession[];
-}
-
-export interface ProgramDay {
-  day: number;
-  date: string;
-  dayLabel: string;
-  tracks: ProgramTrack[];
+export interface ParallelSessionRoom {
+  roomNumber: string;
+  roomName: string;
+  sessionCode: string;
+  themeKo: string;
+  themeEn: string;
+  moderator: string;
+  papers: PaperPresentation[];
 }
 
 export interface FeeItem {
   category: string;
   earlyBird: number;
-  regular: number;
   onSite: number;
   note?: string;
 }
@@ -66,9 +59,9 @@ export const conferenceConfig = {
     theme: "AI for All: Establishing Practical AI Infrastructure for Inclusive Language Learning",
     themeKo: "모두를 위한 인공지능: 포용적 언어 학습을 위한 실용적 AI 인프라 구축",
     themeSub: "Establishing Practical AI Infrastructure for Inclusive Language Learning",
-    dateRange: "2026년 10월 17일(토) 10:00 ~ 16:30",
+    dateRange: "2026년 10월 17일(토) 10:00 ~ 17:00 (등록 09:30 ~)",
     startDateIso: "2026-10-17T10:00:00+09:00",
-    venueName: "건국대학교 글로컬캠퍼스 (충청북도 충주시)",
+    venueName: "충주 건국대학교 글로컬캠퍼스",
     venueShort: "건국대학교 글로컬캠퍼스",
     venueAddress: "충청북도 충주시 충원대로 268 건국대학교 GLOCAL(글로컬)캠퍼스",
     venueNotice: "판교역에서 KTX-이음 탑승 시 충주역까지 약 1시간 소요 (교통 편리)",
@@ -77,14 +70,6 @@ export const conferenceConfig = {
     logoUrl: "/images/kamall-logo.png",
     posterUrl: "/images/kamall-2026-poster.jpg",
   },
-
-  // 퀵 통계/하이라이트
-  stats: [
-    { label: "예상 참가인원", value: "300+ 명" },
-    { label: "기조 / 플래너리", value: "3개 세션" },
-    { label: "구두 / 포스터 발표", value: "40+ 편" },
-    { label: "판교-충주 소요시간", value: "KTX 1시간" },
-  ],
 
   // 10월 가을 학회장 환영사 (신동광 회장님)
   welcomeMessage: {
@@ -101,6 +86,20 @@ export const conferenceConfig = {
     ],
   },
 
+  // 학술대회 위원장 환영사 (이혜진 교수님)
+  chairWelcomeMessage: {
+    chairName: "이혜진 교수",
+    chairTitle: "2026 KAMALL 학술대회 위원장",
+    affiliation: "원광대학교 영어교육과",
+    imageUrl: "/images/chair-leehyejin.png",
+    paragraphs: [
+      "존경하는 KAMALL 회원 여러분 및 학술대회 참가자 여러분, 2026년 한국멀티미디어언어교육학회 연례학술대회에 오신 것을 진심으로 환영합니다. ✨",
+      "이번 학술대회는 인공지능이 교육 현장에 깊숙이 뿌리내리는 전환점에서, '모두를 위한 AI'라는 교육적 가치를 실현하고자 총 22편의 우수 학술 연구와 심층 워크숍, 국내외 저명 석학들의 기조·플래너리 강연을 정성껏 준비하였습니다.",
+      "오전의 통찰력 있는 기조 및 플래너리 강연에 이어, 오후에는 말하기·듣기, 생성형 AI 쓰기 및 피드백, 코퍼스·NLP 언어 진단, 학습자 요인과 국제교류에 이르는 4개 분과 세션에서 치열하고도 따뜻한 학문적 담론이 펼쳐질 예정입니다.",
+      "전국 각지에서 충주 건국대 글로컬캠퍼스로 모여주실 연구자 및 현장 교사 여러분께 깊은 감사를 드리며, 본 대회가 서로의 지혜를 나누고 미래 언어 교육의 비전을 함께 세우는 뜻깊은 교류의 장이 되기를 소망합니다. 회원 여러분의 많은 관심과 적극적인 참여를 부탁드립니다.",
+    ],
+  },
+
   // 중요 일정 (D-Day 타임라인)
   importantDates: [
     {
@@ -108,50 +107,42 @@ export const conferenceConfig = {
       title: "발표 제목 신청 마감",
       dateStr: "2026년 7월 31일 (금)",
       isoDate: "2026-07-31",
-      status: "open",
-      description: "구글 폼을 통한 발표 제목 및 연구 개요 신청 마감",
+      status: "closed",
+      description: "발표 제목 및 연구 개요 접수 마감 완료",
     },
     {
       id: "cfp-deadline",
       title: "초록 접수 마감",
       dateStr: "2026년 8월 15일 (금)",
       isoDate: "2026-08-15",
-      status: "upcoming",
-      description: "국/영문 공식 발표 초록 파일 온라인 제출 마감",
-    },
-    {
-      id: "notification",
-      title: "초록 채택 심사 결과 발표",
-      dateStr: "2026년 8월 30일 (일)",
-      isoDate: "2026-08-30",
-      status: "upcoming",
-      description: "개별 이메일 안내 및 학회 홈페이지 공지",
+      status: "closed",
+      description: "국/영문 공식 발표 초록 접수 마감 완료",
     },
     {
       id: "early-reg",
-      title: "사전등록(Early-Bird) 마감",
-      dateStr: "2026년 9월 25일 (금) 18:00",
+      title: "사전등록(Early-Bird) 기간",
+      dateStr: "2026년 9월 25일 (금) 18:00까지",
       isoDate: "2026-09-25",
-      status: "upcoming",
-      description: "사전등록 할인 마감",
+      status: "open",
+      description: "온라인 구글폼을 통한 사전등록 할인 혜택 제공",
     },
     {
       id: "conference-day",
       title: "2026 KAMALL 학술대회 개최",
-      dateStr: "2026년 10월 17일(토) 10:00 ~ 16:30",
+      dateStr: "2026년 10월 17일(토) 10:00 ~ 17:00",
       isoDate: "2026-10-17",
       status: "upcoming",
-      description: "건국대학교 글로컬캠퍼스 본 행사 개최",
+      description: "충주 건국대학교 글로컬캠퍼스 본 대회 개최 (등록 09:30 ~)",
     },
   ] as ImportantDate[],
 
-  // 기조연설 및 플래너리 연사 (사진 포함)
+  // 기조연설 및 플래너리 연사
   keynoteSpeakers: [
     {
       id: "spk-keynote",
       name: "이장호 교수",
       affiliation: "중앙대학교 (Chung-Ang University)",
-      role: "기조연설 | Keynote Speaker",
+      role: "기조강연 | Keynote",
       speakerType: "keynote",
       imageUrl: "/images/speaker-lee-jangho.jpg",
       title: "Reconceptualizing L2 Instruction in the GenAI Era: A GenAI-Mediated Activity Theory Framework",
@@ -162,7 +153,7 @@ export const conferenceConfig = {
       id: "spk-plenary-1",
       name: "이성용 교수",
       affiliation: "University College London (UCL), UK",
-      role: "플래너리 | Plenary Speaker",
+      role: "Plenary 1 | 플래너리",
       speakerType: "plenary",
       imageUrl: "/images/speaker-lee-seongyong.jpg",
       title: "Rethinking Language Learning with Agentic AI: From Multimodal to Intercultural and Inclusive Learning",
@@ -173,128 +164,228 @@ export const conferenceConfig = {
       id: "spk-plenary-2",
       name: "권서경 교수",
       affiliation: "서울교육대학교 (Seoul National Univ. of Education)",
-      role: "플래너리 | Plenary Speaker",
+      role: "Plenary 2 | 플래너리",
       speakerType: "plenary",
       imageUrl: "/images/speaker-kwon-seokyeong.jpg",
-      title: "정답의 시대에서 질문의 시대: AI 시대 영어 능력의 새로운 정의",
+      title: "정답의 시대에서 질문의 시대로: AI 시대 영어 능력의 새로운 정의",
       abstract: "단순 지식 암기와 정답 도출 중심의 과거 교육에서 벗어나, 정교한 프롬프트 엔지니어링과 비판적 사고를 통해 좋은 질문을 생성하고 AI와 협업하는 '질문의 시대'에서 요구되는 미래형 영어 능력을 새롭게 정의합니다.",
       bio: "서울교육대학교 영어교육과 교수로서 초·중등 영어교육 혁신, AI 융합 교수학습 설계 및 미래형 언어 평가 체계 개발을 선도하고 있습니다.",
     },
   ] as KeynoteSpeaker[],
 
-  // 프로그램 타임테이블 (10월 17일 토요일 10:00 ~ 16:30)
-  programSchedule: [
+  // 2부 학술발표 (온·오프라인 병행 22편 세부 데이터)
+  parallelSessionsPart1: [
     {
-      day: 1,
-      date: "2026년 10월 17일 (토)",
-      dayLabel: "2026 KAMALL 연례학술대회 (본대회)",
-      tracks: [
+      roomNumber: "제1발표실 (101호)",
+      roomName: "제1발표실",
+      sessionCode: "Session ①",
+      themeKo: "AI 기반 말하기·듣기 교육",
+      themeEn: "AI-Mediated Speaking & Listening",
+      moderator: "강주훈 (한국교통대학교)",
+      papers: [
         {
-          trackName: "메인홀: 개회식 & 기조연설 / 플래너리 세션",
-          sessions: [
-            { time: "09:30 - 10:00", title: "현장 등록 및 자료 배포 / 네트워킹", location: "행사장 로비", type: "ceremony" },
-            { time: "10:00 - 10:20", title: "개회식 및 환영사 (신동광 KAMALL 회장 / 건국대 축사)", location: "대강당", type: "ceremony" },
-            { 
-              time: "10:20 - 11:20", 
-              title: "기조연설: Reconceptualizing L2 Instruction in the GenAI Era", 
-              location: "대강당", 
-              type: "keynote", 
-              speakers: "이장호 교수 (중앙대)",
-              chair: "이혜진 학술대회위원장 (원광대)" 
-            },
-            { 
-              time: "11:30 - 12:20", 
-              title: "플래너리 I: Rethinking Language Learning with Agentic AI", 
-              location: "대강당", 
-              type: "plenary", 
-              speakers: "이성용 교수 (University College London)",
-              chair: "임재현 프로그램체어 (대구교대)" 
-            },
-            { time: "12:20 - 13:30", title: "점심 오찬 및 포스터 세션 관람 / 후원사 부스 전시 투어", location: "교내 식당 & 전시홀", type: "break" },
-            { 
-              time: "13:30 - 14:20", 
-              title: "플래너리 II: 정답의 시대에서 질문의 시대: AI 시대 영어 능력의 새로운 정의", 
-              location: "대강당", 
-              type: "plenary", 
-              speakers: "권서경 교수 (서울교대)",
-              chair: "황요한 프로시딩즈체어 (전북대)" 
-            },
-          ]
+          title: "AI-Based Spoken Interaction for Listening-Oriented Learning in EFL Classrooms",
+          presenter: "하종범 (국립금오공과대학교)",
+          discussant: "이지영 (한양대학교)",
         },
         {
-          trackName: "오후 분과 세션: 트랙 A (AI 인프라 & 교수법)",
-          sessions: [
-            { time: "14:30 - 15:50", title: "구두발표 A: 생성형 AI 기반 교실 수업 설계 및 학습자 평가 실증 연구 (4편)", location: "세미나실 101", type: "oral", chair: "분과 좌장" },
-            { time: "16:00 - 16:30", title: "종합 토론 및 폐회식 / 우수논문상 시상 / KAMALL 정기총회", location: "대강당", type: "ceremony" },
-          ]
+          title: "Development and Evaluation of Customized Chatbots for Elementary English Education: Deriving Instructor-Informed Prompt Design Principles",
+          presenter: "서소담 · 이동주 (한국교원대학교)",
+          discussant: "석소연 (전북대학교)",
         },
         {
-          trackName: "오후 분과 세션: 트랙 B (포용적 언어학습 & 에듀테크)",
-          sessions: [
-            { time: "14:30 - 15:50", title: "구두발표 B: 다문화·취약계층을 위한 포용적 AI 언어 학습 도구 개발 및 적용 (4편)", location: "세미나실 102", type: "oral", chair: "분과 좌장" },
-            { time: "16:00 - 16:30", title: "종합 토론 및 폐회식 / KAMALL 정기총회", location: "대강당", type: "ceremony" },
-          ]
-        }
+          title: "Effect of an AI-based Application on Enhancing the L2 Listening Comprehension of Chinese EFL Students",
+          presenter: "Lin Yini (이화여자대학교)",
+          discussant: "Praxi Castillo (Pai Chai University)",
+        },
+        {
+          title: "Effects of Human–AI Interaction on L2 Speaking and Oral Summarization",
+          presenter: "Hye Won Shin (Sejong University)",
+          discussant: "송기원 (경북대학교)",
+        },
       ]
-    }
-  ] as ProgramDay[],
+    },
+    {
+      roomNumber: "제2발표실 (102호)",
+      roomName: "제2발표실",
+      sessionCode: "Session ②",
+      themeKo: "생성형 AI 활용 쓰기·피드백·교수법",
+      themeEn: "GenAI-Assisted Writing, Feedback & Pedagogy",
+      moderator: "김미숙 (경희대학교)",
+      papers: [
+        {
+          title: "Negotiating AI Feedback in English Writing: Feedback Uptake and Metalinguistic Awareness among Korean EFL University Students",
+          presenter: "Kwon, Eunsook (Daegu National University of Education)",
+          discussant: "석소연 (전북대학교)",
+        },
+        {
+          title: "Beyond the Prompt: GenAI Multimodal Composition and L2 Writing Development",
+          presenter: "Yohan Hwang · Jeong-Eun Kim (Jeonbuk National University)",
+          discussant: "Praxi Castillo (Pai Chai University)",
+        },
+        {
+          title: "에세이 평가에서 언어 측면 평가의 총체적 평가 대체 가능성 연구",
+          presenter: "최민석 · 이동주 (한국교원대학교)",
+          discussant: "송기원 (경북대학교)",
+        },
+        {
+          title: "The Differential Impact of Generative-AI and Human Feedback on Korean EFL Students' Argumentative Writing",
+          presenter: "Park, Punahm (Seo Kyeong University) · Kim, Taiwon (Sogang University)",
+          discussant: "장은정 (조치원대동초등학교)",
+        },
+      ]
+    },
+    {
+      roomNumber: "제3발표실 (103호, 온라인 병행)",
+      roomName: "제3발표실",
+      sessionCode: "Session ③",
+      themeKo: "코퍼스·평가·NLP 기반 언어 진단",
+      themeEn: "Corpus, Assessment & NLP-Based Diagnostics",
+      moderator: "이송은 (동의대학교)",
+      papers: [
+        {
+          title: "Exploring an AI-Human Workflow for Formative Quiz Development: Learning Outcomes and Student Perceptions",
+          presenter: "Kyung-Mi O (Dongduk Women's University)",
+          discussant: "Praxi Castillo (Pai Chai University)",
+        },
+        {
+          title: "왜 어떤 문제는 아는 학생만 풀리는가: 문항의 포용성과 구인무관 난이도(construct-irrelevant difficulty)를 진단하는 온톨로지 기반 AI 틀",
+          presenter: "김삼유 (양영교육) · 방정선 (대전시청자미디어센터)",
+          discussant: "송기원 (경북대학교)",
+        },
+        {
+          title: "코퍼스를 활용한 언어자료 기반 학습법(Data-Driven Learning)이 초등학생의 영어 문법 학습에 미치는 효과 연구",
+          presenter: "송부연 · 이동주 (한국교원대학교)",
+          discussant: "장은정 (조치원대동초등학교)",
+        },
+        {
+          title: "인공지능 기반 언어 자료 기반 학습 웹 도구(AI-DDL)의 설계와 구현",
+          presenter: "이원지 · 이동주 (한국교원대학교)",
+          discussant: "Jayoung Song (광주교육대학교)",
+        },
+      ]
+    },
+    {
+      roomNumber: "제4발표실 (104호)",
+      roomName: "제4발표실",
+      sessionCode: "Session ④",
+      themeKo: "학습자 요인과 교육과정·국제교류",
+      themeEn: "Learner Factors, Curriculum & Intercultural Exchange",
+      moderator: "안유영 (전남대학교)",
+      papers: [
+        {
+          title: "Innovating Language Education: Integrating Generative AI into Project-Based Language Learning in South Korean Higher Education",
+          presenter: "Ryan Hatcher (Hannam University)",
+          discussant: "송기원 (경북대학교)",
+        },
+        {
+          title: "지속가능한 영어교육과를 위한 새로운 가능성 탐색: 생성형 AI 기반 Project-Based Service Learning 사례",
+          presenter: "이혜진 (원광대학교) · 이가영 (숭실대학교)",
+          discussant: "장은정 (조치원대동초등학교)",
+        },
+        {
+          title: "Mind Mapping for Vocabulary Learning: Modality, Delivery, and the Role of Mind Map Quality",
+          presenter: "TAEYEON HWANG (Hankuk University of Foreign Studies)",
+          discussant: "Jayoung Song (광주교육대학교)",
+        },
+        {
+          title: "한국 고등학교 EFL 학습자들의 성장 마인드셋과 영어 어휘지식의 관계: 어휘학습 자기조절능력의 매개효과",
+          presenter: "정다빈 · 이동주 (한국교원대학교)",
+          discussant: "이지영 (한양대학교)",
+        },
+      ]
+    },
+  ] as ParallelSessionRoom[],
 
-  // 논문 투고 (Call for Papers)
-  cfp: {
-    theme: "AI for All: Establishing Practical AI Infrastructure for Inclusive Language Learning",
-    topics: [
-      "모두를 위한 포용적 인공지능(Inclusive AI) 기반 언어 교수·학습 모델",
-      "실용적 AI 교육 인프라 구축 및 교실 현장 적용 사례",
-      "생성형 AI(LLM) 및 에이전틱 AI(Agentic AI)를 활용한 개별 맞춤형 언어 교육",
-      "멀티모달 및 상호문화적(Intercultural) 언어 학습 환경 설계",
-      "질문 중심 학습과 AI 시대의 새로운 언어 평가 및 리터러시",
-      "디지털 격차 해소를 위한 취약계층 및 다문화 언어 학습자 지원 AI 솔루션",
-      "MALL(멀티미디어언어교육)과 AI 윤리, 데이터 프라이버시 및 교사 역량 개발",
-    ],
-    submissionTypes: [
-      {
-        title: "구두 발표 (Oral Presentation)",
-        duration: "발표 15분 + 질의응답 5분",
-        format: "완성 연구 또는 심층 사례 연구 (국문 또는 영문 초록 500자 내외)",
-      },
-      {
-        title: "포스터 발표 (Poster Presentation)",
-        duration: "점심 및 지정 포스터 세션",
-        format: "진행 중인 연구, 시스템 데모, 현장 실천 사례 (A0 규격 포스터)",
-      },
-      {
-        title: "에듀테크 워크숍 (Workshop)",
-        duration: "에듀테크 실습형 세션",
-        format: "교실 수업 적용 가능한 실습 도구 및 프롬프트 엔지니어링 활용 실습",
-      },
-    ],
-    guidelines: [
-      "발표자는 KAMALL 정회원이어야 합니다 (비회원은 접수 전/후 회원가입 가능).",
-      "발표 제목 신청 마감: 2026년 7월 31일(금)까지 구글 폼으로 접수",
-      "초록 접수 마감: 2026년 8월 15일(금)까지 공식 양식 파일 작성 후 제출",
-      "학술위원회 심사를 거쳐 채택된 논문은 2026 KAMALL 학술대회 논문집에 수록됩니다.",
-      "우수 발표 논문은 본 학회 등재학술지인 『멀티미디어 언어교육』 투고 시 신속 심사 혜택이 주어집니다.",
-    ],
-    templateHwpUrl: "#download-hwp",
-    templateDocxUrl: "#download-docx",
-    submitFormUrl: "https://forms.gle/Je4w9vQ2iZ2hkykU6",
-  },
+  parallelSessionsPart2: [
+    {
+      roomNumber: "제1발표실 (101호)",
+      roomName: "제1발표실",
+      sessionCode: "Session ⑤",
+      themeKo: "AI 기반 말하기·듣기 교육",
+      themeEn: "AI-Mediated Speaking & Listening",
+      moderator: "백지운 (중부대학교)",
+      papers: [
+        {
+          title: "When Does Corrective Feedback Become Mediation? On-Screen Feedback in AI-Based L2 Speaking App Interaction",
+          presenter: "이지영 · 박유정 (한양대학교 / 성균관대학교)",
+          discussant: "하종범 (국립금오공과대학교)",
+        },
+      ]
+    },
+    {
+      roomNumber: "제2발표실 (102호)",
+      roomName: "제2발표실",
+      sessionCode: "Session ⑥",
+      themeKo: "생성형 AI 활용 쓰기·피드백·교수법",
+      themeEn: "GenAI-Assisted Writing, Feedback & Pedagogy",
+      moderator: "조규희 (경인교육대학교)",
+      papers: [
+        {
+          title: "생성형 AI 시대 영어교사의 교수 실천과 정체성 재구성: GMAT(GenAI-Mediated Activity Theory) 기반 자문화기술지 연구",
+          presenter: "석소연 (전북대학교)",
+          discussant: "Kwon, Eunsook (Daegu National University of Education)",
+        },
+        {
+          title: "From Prompting to Pedagogy: A Practical Framework for Integrating Generative AI into English Language Teaching (수업시연)",
+          presenter: "Praxi Castillo (Pai Chai University)",
+          discussant: "Park, Punahm (Seo Kyeong University)",
+        },
+      ]
+    },
+    {
+      roomNumber: "제3발표실 (103호, 온라인 병행)",
+      roomName: "제3발표실",
+      sessionCode: "Session ⑦",
+      themeKo: "코퍼스·평가·NLP 기반 언어 진단",
+      themeEn: "Corpus, Assessment & NLP-Based Diagnostics",
+      moderator: "황요한 (전북대학교)",
+      papers: [
+        {
+          title: "Evaluating Cloze-Solving Behaviour across Model Architectures: A Comparative Study of BERT, GPT-2, and Korean CSAT Readers",
+          presenter: "송기원 · 문성민 (경북대학교)",
+          discussant: "이원지 (한국교원대학교)",
+        },
+      ]
+    },
+    {
+      roomNumber: "제4발표실 (104호)",
+      roomName: "제4발표실",
+      sessionCode: "Session ⑧",
+      themeKo: "학습자 요인과 교육과정·국제교류",
+      themeEn: "Learner Factors, Curriculum & Intercultural Exchange",
+      moderator: "이혜진 (원광대학교)",
+      papers: [
+        {
+          title: "온라인 국제교류 활동이 초등학생의 영어 의사소통 역량에 미치는 영향",
+          presenter: "장은정 · 이동주 (한국교원대학교)",
+          discussant: "Ryan Hatcher (Hannam University)",
+        },
+        {
+          title: "Beyond Pages, Across Realities: Contextual and Pedagogical Factors Shaping Reading Engagement in AR and Paper-Based Environments",
+          presenter: "Jayoung Song (Gwangju National University of Education)",
+          discussant: "정다빈 (한국교원대학교)",
+        },
+      ]
+    },
+  ] as ParallelSessionRoom[],
 
-  // 사전 등록 안내 (환불 삭제)
+  // 참가비 및 등록비 (유저 첨부 이미지 정확 반영)
   registration: {
     bankInfo: {
       bankName: "국민은행",
-      accountNumber: "123-45-678901",
+      accountNumber: "271401-04-180149",
       accountHolder: "한국멀티미디어언어교육학회",
-      depositGuide: "입금자명은 반드시 '등록자성명+소속' (예: 홍길동건국대)으로 기재해 주시기 바랍니다.",
+      depositGuide: "입금자명은 반드시 '등록자성명+소속' (예: 홍길동원광대)으로 기재해 주시기 바랍니다.",
     },
     feeTable: [
-      { category: "일반 회원 (전임교원/연구원)", earlyBird: 50000, regular: 60000, onSite: 70000, note: "논문집, 기념품, 오찬 및 다과 제공" },
-      { category: "학생 회원 (대학원생/학부생)", earlyBird: 25000, regular: 30000, onSite: 35000, note: "학생증 확인 필요" },
-      { category: "비회원 (일반 참가자)", earlyBird: 70000, regular: 80000, onSite: 90000, note: "학술대회 준회원 자격 부여" },
+      { category: "학부생·대학원생", earlyBird: 10000, onSite: 15000, note: "학생증 확인 필요" },
+      { category: "KAMALL 회원", earlyBird: 20000, onSite: 25000, note: "학회 정회원" },
+      { category: "KAMALL 비회원", earlyBird: 30000, onSite: 35000, note: "일반 참가자" },
+      { category: "단체 (10인 이상)", earlyBird: 15000, onSite: 20000, note: "1인당 금액 (사전신청 필수)" },
     ] as FeeItem[],
     policyNotice: "※ 학술대회 준비 및 프로시딩 인쇄 관계로 등록비 납부 후에는 환불이 불가하오니 신중한 등록을 부탁드립니다.",
-    registerFormUrl: "https://forms.gle/Je4w9vQ2iZ2hkykU6",
+    registerFormUrl: "https://forms.gle/gWy68sMJFjQz9D5E9",
   },
 
   // 행사장 및 오시는 길
@@ -318,7 +409,7 @@ export const conferenceConfig = {
     ],
   },
 
-  // 학술대회 조직위원회 (업무분장표 실제 데이터)
+  // 학술대회 조직위원회
   committee: {
     conferenceChair: {
       role: "학술대회 위원장 (Conference Chair)",
@@ -345,7 +436,7 @@ export const conferenceConfig = {
     ] as CommitteeMember[],
   },
 
-  // 후원/협찬 업체 (SponsorStatusTable 실제 데이터)
+  // 후원사
   sponsors: [
     { name: "플랭 (Plang)", category: "발표 & 전시 부스 후원", tier: "골드 파트너" },
     { name: "AIONA-AI 플랫폼", category: "발표 세션 후원", tier: "골드 파트너" },
@@ -359,7 +450,7 @@ export const conferenceConfig = {
     { name: "한국연구재단 (NRF)", category: "등재학술지 학술 활동 지원", tier: "학술 후원" },
   ],
 
-  // 문의 및 사무국
+  // 문의처
   contact: {
     secretariat: "한국멀티미디어언어교육학회(KAMALL) 학술대회 준비위원회",
     email: "kamall2026@gmail.com",
