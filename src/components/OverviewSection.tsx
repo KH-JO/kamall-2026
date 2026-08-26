@@ -77,7 +77,7 @@ export default function OverviewSection() {
           })}
         </div>
 
-        {/* 1. President Welcome Message Card (자연스러운 원형 인물 포트레이트 프레임) */}
+        {/* 1. President Welcome Message Card (깔끔하고 품격 있는 미니멀 프로필) */}
         <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm relative mb-10">
           <div className="absolute top-6 right-6 text-slate-300 opacity-30 pointer-events-none hidden sm:block">
             <Quote className="w-24 h-24" />
@@ -85,27 +85,19 @@ export default function OverviewSection() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
-            {/* President Photo (Natural circular portrait with elegant shadow & ring) */}
+            {/* President Photo & Clean Profile */}
             <div className="lg:col-span-4 flex flex-col items-center text-center lg:border-r border-slate-200 lg:pr-8">
-              <div className="relative mb-4">
-                <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full overflow-hidden shadow-lg border-4 border-white ring-4 ring-purple-200/80 bg-slate-100 flex-shrink-0">
-                  <img
-                    src={welcomeMessage.imageUrl}
-                    alt={welcomeMessage.presidentName}
-                    className="w-full h-full object-cover object-[50%_15%]"
-                  />
-                </div>
-                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-purple-700 text-white text-[10px] font-black uppercase tracking-wider shadow-xs whitespace-nowrap">
-                  President
-                </div>
+              <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full overflow-hidden shadow-md border-4 border-white ring-2 ring-purple-200 bg-slate-100 mb-3.5 flex-shrink-0">
+                <img
+                  src={welcomeMessage.imageUrl}
+                  alt={welcomeMessage.presidentName}
+                  className="w-full h-full object-cover object-[50%_15%]"
+                />
               </div>
               
-              <h4 className="text-xl font-black text-slate-950 mt-1">{welcomeMessage.presidentName}</h4>
-              <div className="text-sm font-bold text-purple-800 mt-0.5">{welcomeMessage.presidentTitle}</div>
+              <h4 className="text-xl font-black text-slate-950">{welcomeMessage.presidentName}</h4>
+              <div className="text-xs sm:text-sm font-bold text-purple-800 mt-1">{welcomeMessage.presidentTitle}</div>
               <div className="text-xs text-slate-600 mt-0.5">{welcomeMessage.affiliation}</div>
-              <div className="mt-2.5 px-3 py-0.5 rounded-full bg-purple-100/70 border border-purple-200 text-[11px] font-bold text-purple-900">
-                {meta.host}
-              </div>
             </div>
 
             {/* Welcome Greeting Body */}
@@ -130,7 +122,7 @@ export default function OverviewSection() {
           </div>
         </div>
 
-        {/* 2. Conference Chair Welcome Message Card (자연스러운 원형 인물 포트레이트 프레임) */}
+        {/* 2. Conference Chair Welcome Message Card (깔끔하고 품격 있는 미니멀 프로필) */}
         <div className="bg-gradient-to-br from-purple-50/70 via-white to-blue-50/50 border-2 border-purple-200 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-sm relative">
           <div className="absolute top-6 right-6 text-purple-200 opacity-40 pointer-events-none hidden sm:block">
             <Quote className="w-24 h-24" />
@@ -138,27 +130,19 @@ export default function OverviewSection() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
-            {/* Chair Photo (Natural circular portrait with elegant shadow & ring) */}
+            {/* Chair Photo & Clean Profile */}
             <div className="lg:col-span-4 flex flex-col items-center text-center lg:border-r border-purple-100 lg:pr-8">
-              <div className="relative mb-4">
-                <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full overflow-hidden shadow-lg border-4 border-white ring-4 ring-indigo-200/80 bg-slate-100 flex-shrink-0">
-                  <img
-                    src={chairWelcomeMessage.imageUrl}
-                    alt={chairWelcomeMessage.chairName}
-                    className="w-full h-full object-cover object-[50%_12%]"
-                  />
-                </div>
-                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-indigo-700 text-white text-[10px] font-black uppercase tracking-wider shadow-xs whitespace-nowrap">
-                  Conference Chair
-                </div>
+              <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full overflow-hidden shadow-md border-4 border-white ring-2 ring-indigo-200 bg-slate-100 mb-3.5 flex-shrink-0">
+                <img
+                  src={chairWelcomeMessage.imageUrl}
+                  alt={chairWelcomeMessage.chairName}
+                  className="w-full h-full object-cover object-[50%_12%]"
+                />
               </div>
 
-              <h4 className="text-xl font-black text-slate-950 mt-1">{chairWelcomeMessage.chairName}</h4>
-              <div className="text-sm font-bold text-indigo-800 mt-0.5">{chairWelcomeMessage.chairTitle}</div>
+              <h4 className="text-xl font-black text-slate-950">{chairWelcomeMessage.chairName}</h4>
+              <div className="text-xs sm:text-sm font-bold text-indigo-800 mt-1">{chairWelcomeMessage.chairTitle}</div>
               <div className="text-xs text-slate-600 mt-0.5">{chairWelcomeMessage.affiliation}</div>
-              <div className="mt-2.5 px-3 py-0.5 rounded-full bg-indigo-100/80 border border-indigo-200 text-[11px] font-bold text-indigo-900">
-                2026 연례학술대회 조직위원회
-              </div>
             </div>
 
             {/* Chair Greeting Body */}

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { conferenceConfig } from '@/config/conferenceConfig';
-import { Users, Award, HeartHandshake, ShieldCheck, ExternalLink } from 'lucide-react';
+import { Users, Award, HeartHandshake, ShieldCheck } from 'lucide-react';
 
 export default function CommitteeSection() {
   const { committee, sponsors } = conferenceConfig;
@@ -74,7 +74,7 @@ export default function CommitteeSection() {
           </div>
         </div>
 
-        {/* Sponsors Grid (With Logos and Correct Tiers) */}
+        {/* Sponsors Grid (Balanced Logo Sizing across all 10 organizations) */}
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-6">
             <h3 className="text-xl font-black text-slate-950 flex items-center justify-center gap-2">
@@ -90,27 +90,29 @@ export default function CommitteeSection() {
             {sponsors.map((sp, idx) => (
               <div
                 key={idx}
-                className="bg-white border border-slate-200 rounded-2xl p-4 flex flex-col items-center justify-between text-center hover:border-purple-300 hover:shadow-xs transition-all group"
+                className="bg-white border border-slate-200 rounded-2xl p-3 sm:p-3.5 flex flex-col items-center justify-between text-center hover:border-purple-300 hover:shadow-xs transition-all group"
               >
-                <div className="w-full h-12 flex items-center justify-center mb-2 px-1">
+                {/* Unified, Perfectly Balanced Logo Frame */}
+                <div className="w-full h-11 flex items-center justify-center mb-1.5 px-2">
                   {sp.logoUrl ? (
                     <img
                       src={sp.logoUrl}
                       alt={sp.name}
-                      className="max-h-10 w-auto object-contain group-hover:scale-105 transition-transform"
+                      className="max-h-7 sm:max-h-8 max-w-[110px] w-auto object-contain group-hover:scale-105 transition-transform"
                     />
                   ) : (
-                    <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-800 font-bold flex items-center justify-center text-xs">
+                    <div className="w-8 h-8 rounded-lg bg-purple-50 text-purple-800 font-bold flex items-center justify-center text-xs">
                       {sp.name.slice(0, 2)}
                     </div>
                   )}
                 </div>
 
+                {/* Text & Tier Badge */}
                 <div className="w-full pt-2 border-t border-slate-100">
-                  <div className="text-xs font-black text-slate-900 leading-tight">
+                  <div className="text-[11px] sm:text-xs font-black text-slate-900 leading-tight line-clamp-1">
                     {sp.name}
                   </div>
-                  <div className={`text-[10px] font-extrabold mt-1 px-2 py-0.5 rounded-full inline-block ${
+                  <div className={`text-[9.5px] font-bold mt-1 px-2 py-0.5 rounded-full inline-block ${
                     sp.tier === '공동 주관' 
                       ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
                       : sp.tier === '학술 후원'
