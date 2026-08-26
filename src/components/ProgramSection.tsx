@@ -7,8 +7,8 @@ import { Clock, MapPin, User, Coffee, ChevronDown, ChevronUp, Download, Printer,
 export default function ProgramSection() {
   const { parallelSessionsPart1, parallelSessionsPart2 } = conferenceConfig;
 
-  // Track expanded session accordion states
-  const [expandedPart1, setExpandedPart1] = useState<number | null>(0); // Default expand Room 1
+  // Track expanded session accordion states (all closed by default)
+  const [expandedPart1, setExpandedPart1] = useState<number | null>(null);
   const [expandedPart2, setExpandedPart2] = useState<number | null>(null);
 
   const togglePart1 = (idx: number) => {
