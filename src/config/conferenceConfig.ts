@@ -438,7 +438,7 @@ export const conferenceConfig = {
 
   // 후원사 및 협력 기업 (로고 및 티어 반영)
   sponsors: [
-    { name: "건국대학교 GLOCAL캠퍼스", tier: "공동 주관", category: "행사장 및 인프라 지원", logoUrl: "/images/sponsors/konkuk.svg" },
+    { name: "건국대학교 GLOCAL캠퍼스", tier: "공동 주관", category: "행사장 및 인프라 지원", logoUrl: "/images/sponsors/konkuk.png" },
     { name: "한국연구재단 (NRF)", tier: "학술 후원", category: "등재학술지 학술 활동 지원", logoUrl: "/images/sponsors/nrf.svg" },
     { name: "플랭 (Plang)", tier: "협력 파트너", category: "AI 영어회화 에듀테크", logoUrl: "/images/sponsors/plang.svg" },
     { name: "AIONA-AI 플랫폼", tier: "협력 파트너", category: "AI 언어교육 플랫폼", logoUrl: "/images/sponsors/aiona.svg" },
