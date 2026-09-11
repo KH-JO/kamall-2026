@@ -75,7 +75,7 @@ export default function CommitteeSection() {
         </div>
 
         {/* Organizer & Sponsors Grid */}
-        <div className="max-w-5xl mx-auto space-y-6">
+        <div className="max-w-6xl mx-auto space-y-6">
           
           {/* Organizer Card */}
           <div className="bg-white border border-slate-200 rounded-3xl p-5 sm:p-6 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
@@ -100,7 +100,7 @@ export default function CommitteeSection() {
             </div>
           </div>
 
-          {/* Sponsors Grid (Centered, prominent logos with no text truncation) */}
+          {/* Sponsors Grid (All 7 Sponsors in a single clean row on desktop) */}
           <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xs">
             <div className="text-center mb-6">
               <h3 className="text-xl font-black text-slate-950 flex items-center justify-center gap-2">
@@ -112,11 +112,12 @@ export default function CommitteeSection() {
               </p>
             </div>
 
-            <div className="flex flex-wrap items-stretch justify-center gap-3.5">
+            {/* 7 columns on desktop (lg:grid-cols-7) -> All in ONE row! */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5 sm:gap-3 items-stretch">
               {sponsors.map((sp, idx) => (
                 <div
                   key={idx}
-                  className="w-[calc(50%-0.5rem)] sm:w-[calc(33.333%-0.75rem)] md:w-[calc(25%-0.75rem)] lg:w-[calc(16.666%-0.75rem)] min-w-[140px] max-w-[190px] bg-white border border-slate-200 hover:border-purple-400 rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-between text-center hover:shadow-md transition-all duration-200 group"
+                  className="w-full bg-white border border-slate-200 hover:border-purple-400 rounded-2xl p-2.5 sm:p-3 flex flex-col items-center justify-between text-center hover:shadow-md transition-all duration-200 group"
                 >
                   {/* Clean, centered logo container */}
                   <div className="w-full h-14 sm:h-16 flex items-center justify-center mb-2 px-1 text-center">
@@ -124,21 +125,21 @@ export default function CommitteeSection() {
                       <img
                         src={sp.logoUrl}
                         alt={sp.name}
-                        className="max-h-9 sm:max-h-10 max-w-[125px] w-auto h-auto mx-auto object-contain block group-hover:scale-105 transition-transform duration-200"
+                        className="max-h-8 sm:max-h-9 max-w-full w-auto h-auto mx-auto object-contain block group-hover:scale-105 transition-transform duration-200"
                       />
                     ) : (
-                      <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-800 font-bold flex items-center justify-center text-xs mx-auto">
+                      <div className="w-9 h-9 rounded-xl bg-purple-50 text-purple-800 font-bold flex items-center justify-center text-xs mx-auto">
                         {sp.name.slice(0, 2)}
                       </div>
                     )}
                   </div>
 
                   {/* Brand name & Tier badge */}
-                  <div className="w-full pt-2.5 border-t border-slate-100 flex flex-col items-center justify-center">
-                    <div className="text-[11px] sm:text-xs font-black text-slate-950 leading-tight min-h-[30px] flex items-center justify-center break-keep text-center">
+                  <div className="w-full pt-2 border-t border-slate-100 flex flex-col items-center justify-center">
+                    <div className="text-[10.5px] sm:text-[11.5px] font-black text-slate-950 leading-tight min-h-[32px] flex items-center justify-center break-keep text-center">
                       {sp.name}
                     </div>
-                    <div className="text-[10px] font-bold mt-1.5 px-2.5 py-0.5 rounded-full inline-block bg-purple-50 text-purple-900 border border-purple-200 shadow-2xs whitespace-nowrap">
+                    <div className="text-[9px] sm:text-[9.5px] font-bold mt-1 px-2 py-0.5 rounded-full inline-block bg-purple-50 text-purple-900 border border-purple-200 shadow-2xs whitespace-nowrap">
                       {sp.tier}
                     </div>
                   </div>
