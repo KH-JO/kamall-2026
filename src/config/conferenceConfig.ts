@@ -131,8 +131,8 @@ export const conferenceConfig = {
     {
       id: "early-reg",
       title: "사전등록(Early-Bird) 기간",
-      dateStr: "2026년 9월 25일 (금) 18:00까지",
-      isoDate: "2026-09-25",
+      dateStr: "2026년 10월 10일 (토) 18:00까지",
+      isoDate: "2026-10-10",
       status: "open",
       description: "온라인 구글폼을 통한 사전등록 할인 혜택 제공",
     },

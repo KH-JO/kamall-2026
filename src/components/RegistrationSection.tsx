@@ -44,7 +44,7 @@ export default function RegistrationSection() {
               <span>등록 구분별 참가비</span>
             </h3>
             <span className="text-xs font-bold text-purple-800 bg-purple-50 px-3 py-1 rounded-full border border-purple-200">
-              사전등록 마감: 2026년 9월 25일(금) 18:00
+              사전등록 마감: 2026년 10월 10일(토) 18:00
             </span>
           </div>
 
