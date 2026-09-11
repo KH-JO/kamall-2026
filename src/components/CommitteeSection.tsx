@@ -5,7 +5,7 @@ import { conferenceConfig } from '@/config/conferenceConfig';
 import { Users, Award, HeartHandshake, ShieldCheck, Building2 } from 'lucide-react';
 
 export default function CommitteeSection() {
-  const { committee, sponsors, organizerInfo, hostInfo } = conferenceConfig;
+  const { committee, sponsors, organizerInfo } = conferenceConfig;
 
   return (
     <section id="committee" className="py-16 bg-slate-50 text-slate-900 relative border-b border-slate-200/80">
@@ -95,12 +95,12 @@ export default function CommitteeSection() {
                 </p>
               </div>
             </div>
-            <div className="h-12 flex items-center px-3 bg-slate-50 rounded-xl border border-slate-200">
-              <img src={organizerInfo.logoUrl} alt={organizerInfo.name} className="max-h-8 w-auto object-contain" />
+            <div className="h-12 flex items-center px-4 bg-slate-50 rounded-xl border border-slate-200">
+              <img src={organizerInfo.logoUrl} alt={organizerInfo.name} className="max-h-9 w-auto object-contain" />
             </div>
           </div>
 
-          {/* Sponsors Grid */}
+          {/* Sponsors Grid (Enlarged, prominent logos with no white box artifacts) */}
           <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xs">
             <div className="text-center mb-6">
               <h3 className="text-xl font-black text-slate-950 flex items-center justify-center gap-2">
@@ -112,31 +112,33 @@ export default function CommitteeSection() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3.5">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3.5">
               {sponsors.map((sp, idx) => (
                 <div
                   key={idx}
-                  className="bg-slate-50 border border-slate-200 rounded-2xl p-3 sm:p-3.5 flex flex-col items-center justify-between text-center hover:border-purple-300 hover:shadow-xs transition-all group"
+                  className="bg-white border border-slate-200 hover:border-purple-400 rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-between text-center hover:shadow-md transition-all duration-200 group"
                 >
-                  <div className="w-full h-11 flex items-center justify-center mb-1.5 px-2">
+                  {/* Clean, enlarged logo container */}
+                  <div className="w-full h-14 sm:h-16 flex items-center justify-center mb-2 px-1">
                     {sp.logoUrl ? (
                       <img
                         src={sp.logoUrl}
                         alt={sp.name}
-                        className="max-h-7 sm:max-h-8 max-w-[110px] w-auto object-contain group-hover:scale-105 transition-transform"
+                        className="max-h-9 sm:max-h-11 max-w-[130px] w-auto object-contain group-hover:scale-105 transition-transform duration-200"
                       />
                     ) : (
-                      <div className="w-8 h-8 rounded-lg bg-purple-50 text-purple-800 font-bold flex items-center justify-center text-xs">
+                      <div className="w-10 h-10 rounded-xl bg-purple-50 text-purple-800 font-bold flex items-center justify-center text-xs">
                         {sp.name.slice(0, 2)}
                       </div>
                     )}
                   </div>
 
-                  <div className="w-full pt-2 border-t border-slate-200/80">
-                    <div className="text-[11px] sm:text-xs font-black text-slate-950 leading-tight line-clamp-1">
+                  {/* Brand name & Tier badge */}
+                  <div className="w-full pt-2.5 border-t border-slate-100 flex flex-col items-center justify-center">
+                    <div className="text-[11px] sm:text-xs font-black text-slate-950 leading-tight min-h-[30px] flex items-center justify-center break-keep">
                       {sp.name}
                     </div>
-                    <div className="text-[9.5px] font-bold mt-1 px-2 py-0.5 rounded-full inline-block bg-purple-100 text-purple-900 border border-purple-200">
+                    <div className="text-[10px] font-bold mt-1.5 px-2.5 py-0.5 rounded-full inline-block bg-purple-50 text-purple-900 border border-purple-200 shadow-2xs whitespace-nowrap">
                       {sp.tier}
                     </div>
                   </div>

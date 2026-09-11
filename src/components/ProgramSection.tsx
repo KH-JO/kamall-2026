@@ -66,49 +66,6 @@ export default function ProgramSection() {
           </div>
         </div>
 
-        {/* ═══════════════════════════════════════════════════════════════════
-            TOP BANNER: 주최 | 주관 | 후원사 로고 그리드 (PDF 상단 디자인 반영)
-           ═══════════════════════════════════════════════════════════════════ */}
-        <div className="max-w-5xl mx-auto mb-10 bg-slate-50 border border-slate-200 rounded-3xl p-5 sm:p-6 shadow-2xs">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-5 items-center">
-            
-            {/* Host */}
-            <div className="md:col-span-3 text-center md:text-left border-b md:border-b-0 md:border-r border-slate-200 pb-4 md:pb-0 md:pr-4">
-              <div className="text-[11px] font-black text-slate-500 uppercase tracking-wider mb-2">
-                주최 | HOST
-              </div>
-              <div className="h-10 flex items-center justify-center md:justify-start">
-                <img src={hostInfo.logoUrl} alt={hostInfo.name} className="max-h-9 w-auto object-contain" />
-              </div>
-            </div>
-
-            {/* Organizer */}
-            <div className="md:col-span-3 text-center md:text-left border-b md:border-b-0 md:border-r border-slate-200 pb-4 md:pb-0 md:pr-4">
-              <div className="text-[11px] font-black text-slate-500 uppercase tracking-wider mb-2">
-                주관 | ORGANIZER
-              </div>
-              <div className="h-10 flex items-center justify-center md:justify-start">
-                <img src={organizerInfo.logoUrl} alt={organizerInfo.name} className="max-h-9 w-auto object-contain" />
-              </div>
-            </div>
-
-            {/* Sponsors */}
-            <div className="md:col-span-6">
-              <div className="text-[11px] font-black text-slate-500 uppercase tracking-wider mb-2 text-center md:text-left">
-                후원사 | SPONSOR
-              </div>
-              <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 items-center">
-                {sponsors.slice(0, 6).map((sp, idx) => (
-                  <div key={idx} className="h-9 bg-white border border-slate-200 rounded-xl p-1 flex items-center justify-center shadow-2xs" title={sp.name}>
-                    <img src={sp.logoUrl} alt={sp.name} className="max-h-6 w-auto object-contain" />
-                  </div>
-                ))}
-              </div>
-            </div>
-
-          </div>
-        </div>
-
         {/* Master Schedule Container */}
         <div className="max-w-5xl mx-auto space-y-8">
 
