@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 36" width="160" height="36">
-  <g transform="translate(0, 3)">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 132 36" width="132" height="36">
+  <g transform="translate(2, 3)">
     <rect x="0" y="0" width="30" height="30" rx="6" fill="#003876"/>
     <text x="10" y="21" font-family="'Arial Black', Arial, sans-serif" font-size="20" font-weight="900" fill="#FFFFFF">e</text>
     <circle cx="22" cy="7" r="3.5" fill="#E65100"/>

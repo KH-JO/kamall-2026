@@ -280,7 +280,7 @@ export default function ProgramSection() {
                   학술발표 및 포스터 세션 I (13:30 ~ 14:50)
                 </div>
                 <h3 className="text-xl font-black text-slate-950">
-                  제2부 학술발표 I — 발표실을 클릭하면 세부 논문 및 토론자가 표시됩니다
+                  제2부 학술발표 I — 각 세션을 클릭하면 발표 관련 세부 정보가 표시됩니다.
                 </h3>
               </div>
               <span className="text-xs font-bold text-slate-500 font-mono">
@@ -382,7 +382,7 @@ export default function ProgramSection() {
                   학술발표 및 포스터 세션 II (15:05 ~ 16:05)
                 </div>
                 <h3 className="text-xl font-black text-slate-950">
-                  제2부 학술발표 II — 발표실을 클릭하면 세부 논문 및 토론자가 표시됩니다
+                  제2부 학술발표 II — 각 세션을 클릭하면 발표 관련 세부 정보가 표시됩니다.
                 </h3>
               </div>
               <span className="text-xs font-bold text-slate-500 font-mono">
