@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useState } from 'react';
-import { conferenceConfig, ParallelSessionRoom } from '@/config/conferenceConfig';
-import { Clock, MapPin, User, Coffee, ChevronDown, ChevronUp, Download, Printer, Sparkles, BookOpen, Layers, CheckCircle2 } from 'lucide-react';
+import { conferenceConfig } from '@/config/conferenceConfig';
+import { Clock, MapPin, User, Coffee, ChevronDown, ChevronUp, Printer, BookOpen, Sparkles, FileText, CheckCircle2 } from 'lucide-react';
 
 export default function ProgramSection() {
-  const { parallelSessionsPart1, parallelSessionsPart2 } = conferenceConfig;
+  const { parallelSessionsPart1, parallelSessionsPart2, posterSessions, part1Info, hostInfo, organizerInfo, sponsors } = conferenceConfig;
 
   // Track expanded session accordion states (all closed by default)
   const [expandedPart1, setExpandedPart1] = useState<number | null>(null);
@@ -32,17 +32,17 @@ export default function ProgramSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header with Download/Print CTA */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
           <div>
             <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-900 text-xs font-black mb-3 shadow-2xs">
               <Clock className="w-3.5 h-3.5 text-purple-700" />
               CONFERENCE PROGRAM & TIMETABLE
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-950 tracking-tight">
-              2026 KAMALL 연례학술대회 프로그램
+              2026 KAMALL 연례학술대회 일정표
             </h2>
             <p className="mt-2 text-sm sm:text-base text-slate-600 font-medium">
-              일시: <span className="font-bold text-purple-900 font-mono">2026년 10월 17일(토) 10:00 ~ 17:00</span> | 장소: <span className="font-bold text-slate-900">충주 건국대학교 글로컬캠퍼스</span>
+              일시: <span className="font-bold text-purple-900 font-mono">2026년 10월 17일 (토) 10:00 ~ 17:00</span> | 장소: <span className="font-bold text-slate-900">충주 건국대학교 글로컬캠퍼스 인문사회관(K6)</span>
             </p>
           </div>
 
@@ -55,7 +55,9 @@ export default function ProgramSection() {
               <span>일정표 인쇄 / PDF 저장</span>
             </button>
             <a
-              href="#registration"
+              href={conferenceConfig.registration.registerFormUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-purple-700 hover:bg-purple-800 text-white font-bold text-xs sm:text-sm shadow-xs transition-colors"
             >
               <BookOpen className="w-4 h-4 text-purple-200" />
@@ -64,23 +66,71 @@ export default function ProgramSection() {
           </div>
         </div>
 
+        {/* ═══════════════════════════════════════════════════════════════════
+            TOP BANNER: 주최 | 주관 | 후원사 로고 그리드 (PDF 상단 디자인 반영)
+           ═══════════════════════════════════════════════════════════════════ */}
+        <div className="max-w-5xl mx-auto mb-10 bg-slate-50 border border-slate-200 rounded-3xl p-5 sm:p-6 shadow-2xs">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-5 items-center">
+            
+            {/* Host */}
+            <div className="md:col-span-3 text-center md:text-left border-b md:border-b-0 md:border-r border-slate-200 pb-4 md:pb-0 md:pr-4">
+              <div className="text-[11px] font-black text-slate-500 uppercase tracking-wider mb-2">
+                주최 | HOST
+              </div>
+              <div className="h-10 flex items-center justify-center md:justify-start">
+                <img src={hostInfo.logoUrl} alt={hostInfo.name} className="max-h-9 w-auto object-contain" />
+              </div>
+            </div>
+
+            {/* Organizer */}
+            <div className="md:col-span-3 text-center md:text-left border-b md:border-b-0 md:border-r border-slate-200 pb-4 md:pb-0 md:pr-4">
+              <div className="text-[11px] font-black text-slate-500 uppercase tracking-wider mb-2">
+                주관 | ORGANIZER
+              </div>
+              <div className="h-10 flex items-center justify-center md:justify-start">
+                <img src={organizerInfo.logoUrl} alt={organizerInfo.name} className="max-h-9 w-auto object-contain" />
+              </div>
+            </div>
+
+            {/* Sponsors */}
+            <div className="md:col-span-6">
+              <div className="text-[11px] font-black text-slate-500 uppercase tracking-wider mb-2 text-center md:text-left">
+                후원사 | SPONSOR
+              </div>
+              <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 items-center">
+                {sponsors.slice(0, 6).map((sp, idx) => (
+                  <div key={idx} className="h-9 bg-white border border-slate-200 rounded-xl p-1 flex items-center justify-center shadow-2xs" title={sp.name}>
+                    <img src={sp.logoUrl} alt={sp.name} className="max-h-6 w-auto object-contain" />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </div>
+
         {/* Master Schedule Container */}
         <div className="max-w-5xl mx-auto space-y-8">
 
           {/* ═══════════════════════════════════════════════════════════════════
-              PART 1: 개회식, 기조연설 및 플래너리 강연 (10:00 ~ 12:30)
+              PART 1: 개회식, 기조강연 및 Plenary (인문사회관 K6 112호)
              ═══════════════════════════════════════════════════════════════════ */}
           <div className="bg-white border-2 border-purple-200 rounded-3xl p-6 sm:p-8 shadow-sm">
-            <div className="flex items-center justify-between gap-2 pb-4 mb-6 border-b border-slate-200">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 mb-6 border-b border-slate-200">
               <div className="flex items-center gap-2.5">
                 <span className="w-3 h-3 rounded-full bg-purple-600" />
                 <h3 className="text-xl font-black text-purple-950">
-                  제1부: 개회식 · 기조강연 및 Plenary 초청 강연
+                  제1부: 개회식 · 기조강연 · Plenary
                 </h3>
               </div>
-              <span className="text-xs font-bold text-purple-800 bg-purple-100 px-3 py-1 rounded-full whitespace-nowrap">
-                대강당 (Main Hall)
-              </span>
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1 rounded-full">
+                  사회자: {part1Info.moderator}
+                </span>
+                <span className="text-xs font-black text-purple-900 bg-purple-100 px-3 py-1 rounded-full whitespace-nowrap">
+                  {part1Info.room}
+                </span>
+              </div>
             </div>
 
             <div className="space-y-4">
@@ -92,12 +142,12 @@ export default function ProgramSection() {
                     09:30 - 10:00
                   </div>
                   <div className="font-bold text-slate-900 text-sm sm:text-base">
-                    등록 및 안내, 자료집 배포
+                    등록 및 안내 (Registration)
                   </div>
                 </div>
                 <div className="text-xs text-slate-500 font-semibold flex items-center gap-1 flex-shrink-0">
                   <MapPin className="w-3.5 h-3.5 text-rose-500" />
-                  행사장 로비 등록데스크
+                  인문사회관(K6) 1층 로비
                 </div>
               </div>
 
@@ -109,7 +159,7 @@ export default function ProgramSection() {
                   </div>
                   <div>
                     <div className="font-black text-slate-950 text-sm sm:text-base">
-                      개회식 및 내빈소개
+                      개회식 및 내빈소개 (Opening)
                     </div>
                     <div className="text-xs text-slate-600 mt-0.5">
                       개회사: 신동광 (광주교육대학교, 한국멀티미디어언어교육학회 회장)
@@ -118,7 +168,7 @@ export default function ProgramSection() {
                 </div>
                 <div className="text-xs text-slate-500 font-semibold flex items-center gap-1 flex-shrink-0">
                   <MapPin className="w-3.5 h-3.5 text-rose-500" />
-                  대강당
+                  {part1Info.room}
                 </div>
               </div>
 
@@ -127,7 +177,7 @@ export default function ProgramSection() {
                 <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                   <div className="flex items-center gap-2">
                     <span className="px-3 py-1 rounded-lg bg-purple-700 text-white text-xs font-black">
-                      기조강연 (Keynote)
+                      기조강연 (Keynote Speech)
                     </span>
                     <span className="font-mono font-black text-purple-950 text-sm sm:text-base">
                       10:10 - 11:10 (60분)
@@ -135,7 +185,7 @@ export default function ProgramSection() {
                   </div>
                   <span className="text-xs font-bold text-slate-500 flex items-center gap-1">
                     <MapPin className="w-3.5 h-3.5 text-rose-500" />
-                    대강당
+                    {part1Info.room}
                   </span>
                 </div>
                 <h4 className="text-base sm:text-lg font-black text-slate-950 mb-2">
@@ -143,7 +193,7 @@ export default function ProgramSection() {
                 </h4>
                 <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-purple-900">
                   <User className="w-4 h-4 text-purple-700" />
-                  <span>연사: 이장호 교수 (중앙대학교)</span>
+                  <span>연사: 이장호 (중앙대학교)</span>
                 </div>
               </div>
 
@@ -160,7 +210,7 @@ export default function ProgramSection() {
                   </div>
                   <span className="text-xs font-bold text-slate-500 flex items-center gap-1">
                     <MapPin className="w-3.5 h-3.5 text-rose-500" />
-                    대강당
+                    {part1Info.room}
                   </span>
                 </div>
                 <h4 className="text-base sm:text-lg font-black text-slate-950 mb-2">
@@ -168,7 +218,7 @@ export default function ProgramSection() {
                 </h4>
                 <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-blue-900">
                   <User className="w-4 h-4 text-blue-700" />
-                  <span>연사: 이성용 교수 (University College London, UK)</span>
+                  <span>연사: 이성용 (University College London)</span>
                 </div>
               </div>
 
@@ -185,7 +235,7 @@ export default function ProgramSection() {
                   </div>
                   <span className="text-xs font-bold text-slate-500 flex items-center gap-1">
                     <MapPin className="w-3.5 h-3.5 text-rose-500" />
-                    대강당
+                    {part1Info.room}
                   </span>
                 </div>
                 <h4 className="text-base sm:text-lg font-black text-slate-950 mb-2">
@@ -193,7 +243,7 @@ export default function ProgramSection() {
                 </h4>
                 <div className="flex items-center gap-2 text-xs sm:text-sm font-bold text-indigo-900">
                   <User className="w-4 h-4 text-indigo-700" />
-                  <span>연사: 권서경 교수 (서울교육대학교)</span>
+                  <span>연사: 권서경 (서울교육대학교)</span>
                 </div>
               </div>
 
@@ -201,7 +251,7 @@ export default function ProgramSection() {
           </div>
 
           {/* ═══════════════════════════════════════════════════════════════════
-              LUNCH & NETWORKING (12:30 ~ 13:30)
+              LUNCH BREAK & SPONSOR SESSIONS (12:30 ~ 13:30)
              ═══════════════════════════════════════════════════════════════════ */}
           <div className="bg-amber-50/70 border-2 border-amber-300 rounded-3xl p-5 sm:p-6 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-4">
@@ -214,34 +264,70 @@ export default function ProgramSection() {
                     12:30 - 13:30 (60분)
                   </span>
                   <span className="px-2 py-0.5 rounded-md bg-amber-200 text-amber-900 text-xs font-black">
-                    점심식사 (Lunch)
+                    점심식사 및 스폰서 세션 (Lunch Break & Sponsor Sessions)
                   </span>
                 </div>
                 <h4 className="text-base font-black text-slate-950">
-                  중식 제공 및 참가자 기념촬영 / 후원사 부스 관람
+                  기념촬영 및 중식 / 후원사 발표 세션
                 </h4>
+                <p className="text-xs text-amber-950 font-bold mt-1">
+                  • 후원사 발표: 플랭(Plang) & 아이오나(AIONA) & 마이티쳐코리아
+                </p>
               </div>
             </div>
             <div className="text-xs font-bold text-amber-900 bg-white px-3.5 py-1.5 rounded-xl border border-amber-200 shadow-2xs whitespace-nowrap">
-              교내 식당 & 로비
+              교내 식당 & K6 112호
             </div>
           </div>
 
           {/* ═══════════════════════════════════════════════════════════════════
-              PART 2: 제2부 학술발표 I (13:30 ~ 14:50) — 4개 발표실 동시 진행
+              POSTER SESSION HIGHLIGHT BANNER
+             ═══════════════════════════════════════════════════════════════════ */}
+          <div className="bg-gradient-to-r from-purple-900 to-indigo-950 text-white rounded-3xl p-6 shadow-md">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 mb-4 border-b border-white/20">
+              <div className="flex items-center gap-2">
+                <FileText className="w-5 h-5 text-amber-300" />
+                <h4 className="text-lg font-black text-white">
+                  포스터 세션 (Poster Sessions)
+                </h4>
+              </div>
+              <span className="text-xs font-bold text-amber-300 bg-white/10 px-3 py-1 rounded-full border border-white/10">
+                * 장소: {posterSessions.location}
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {posterSessions.papers.map((p, idx) => (
+                <div key={idx} className="bg-white/10 backdrop-blur-xs border border-white/15 rounded-2xl p-4">
+                  <div className="text-[11px] font-bold text-purple-200 mb-1">
+                    Poster #{idx + 1}
+                  </div>
+                  <div className="font-bold text-sm sm:text-base text-white leading-snug mb-2">
+                    {p.title}
+                  </div>
+                  <div className="text-xs text-amber-200 font-semibold">
+                    발표자: {p.presenter}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* ═══════════════════════════════════════════════════════════════════
+              PART 2: 제2부 학술발표 및 포스터 세션 I (13:30 ~ 14:50)
              ═══════════════════════════════════════════════════════════════════ */}
           <div className="bg-slate-50 border-2 border-slate-300/80 rounded-3xl p-6 sm:p-8 shadow-sm">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 mb-6 border-b border-slate-200">
               <div>
                 <div className="inline-block text-[11px] font-black text-purple-800 bg-purple-100 px-2.5 py-0.5 rounded-md mb-1 uppercase">
-                  학술발표 I (Session ① · ② · ③ · ④ 동시 진행)
+                  학술발표 및 포스터 세션 I (13:30 ~ 14:50)
                 </div>
                 <h3 className="text-xl font-black text-slate-950">
-                  제2부 학술발표 I (13:30 ~ 14:50) — 클릭하여 세부 논문 및 발표자 확인
+                  제2부 학술발표 I — 발표실을 클릭하면 세부 논문 및 토론자가 표시됩니다
                 </h3>
               </div>
               <span className="text-xs font-bold text-slate-500 font-mono">
-                총 16편 발표 · 4개 분과
+                총 16편 발표 · 4개 세션 동시 진행
               </span>
             </div>
 
@@ -267,7 +353,7 @@ export default function ProgramSection() {
                           <span className="px-2.5 py-0.5 rounded-md bg-purple-700 text-white font-mono font-bold text-xs">
                             {room.sessionCode}
                           </span>
-                          <span className="font-bold text-xs text-slate-500">
+                          <span className="font-bold text-xs text-purple-900 bg-purple-50 px-2 py-0.5 rounded-md border border-purple-200">
                             {room.roomNumber}
                           </span>
                         </div>
@@ -278,7 +364,7 @@ export default function ProgramSection() {
                           {room.themeEn}
                         </div>
                         <div className="text-xs font-bold text-purple-900 mt-2">
-                          사회자: {room.moderator}
+                          사회자 (Chair): {room.moderator}
                         </div>
                       </div>
 
@@ -291,17 +377,21 @@ export default function ProgramSection() {
                     {isExpanded && (
                       <div className="p-4 sm:p-5 bg-slate-50/70 border-t border-slate-100 space-y-3.5 animate-fadeIn">
                         <div className="text-[11px] font-black text-slate-500 uppercase tracking-wider">
-                          발표 논문 목록 ({room.papers.length}편)
+                          세부 발표 일정 ({room.papers.length}편)
                         </div>
                         {room.papers.map((paper, pIdx) => (
                           <div
                             key={pIdx}
                             className="bg-white p-3.5 rounded-xl border border-slate-200 text-xs shadow-2xs space-y-1.5"
                           >
-                            <div className="font-extrabold text-slate-950 leading-snug">
-                              {pIdx + 1}. {paper.title}
+                            <div className="flex items-center justify-between gap-2 text-[11px] text-purple-800 font-mono font-bold">
+                              <span>발표 #{pIdx + 1}</span>
+                              {paper.time && <span>{paper.time}</span>}
                             </div>
-                            <div className="flex flex-col sm:flex-row sm:items-center justify-between text-[11px] text-slate-600 gap-1 pt-1 border-t border-slate-100">
+                            <div className="font-extrabold text-slate-950 text-sm leading-snug">
+                              {paper.title}
+                            </div>
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between text-[11px] text-slate-600 gap-1 pt-1.5 border-t border-slate-100">
                               <div>
                                 <span className="font-bold text-purple-900">발표자:</span> {paper.presenter}
                               </div>
@@ -320,26 +410,26 @@ export default function ProgramSection() {
           </div>
 
           {/* Break Time (14:50 ~ 15:05) */}
-          <div className="text-center py-2.5 px-4 rounded-2xl bg-slate-100 text-slate-600 font-bold text-xs flex items-center justify-center gap-2">
+          <div className="text-center py-3 px-4 rounded-2xl bg-slate-100 text-slate-700 font-bold text-xs flex items-center justify-center gap-2">
             <Clock className="w-3.5 h-3.5 text-slate-500" />
-            <span>Break Time (14:50 ~ 15:05) — 휴식 및 발표장 이동</span>
+            <span>휴식 (Break Time) 14:50 ~ 15:05 — 휴식 및 세션 이동</span>
           </div>
 
           {/* ═══════════════════════════════════════════════════════════════════
-              PART 3: 제2부 학술발표 II (15:05 ~ 16:05) — 4개 발표실 동시 진행
+              PART 3: 제2부 학술발표 및 포스터 세션 II (15:05 ~ 16:05)
              ═══════════════════════════════════════════════════════════════════ */}
           <div className="bg-slate-50 border-2 border-slate-300/80 rounded-3xl p-6 sm:p-8 shadow-sm">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 mb-6 border-b border-slate-200">
               <div>
                 <div className="inline-block text-[11px] font-black text-blue-800 bg-blue-100 px-2.5 py-0.5 rounded-md mb-1 uppercase">
-                  학술발표 II (Session ⑤ · ⑥ · ⑦ · ⑧ 동시 진행)
+                  학술발표 및 포스터 세션 II (15:05 ~ 16:05)
                 </div>
                 <h3 className="text-xl font-black text-slate-950">
-                  제2부 학술발표 II (15:05 ~ 16:05) — 클릭하여 세부 논문 및 발표자 확인
+                  제2부 학술발표 II — 발표실을 클릭하면 세부 논문 및 토론자가 표시됩니다
                 </h3>
               </div>
               <span className="text-xs font-bold text-slate-500 font-mono">
-                총 6편 발표 · 4개 분과
+                총 12편 발표 · 4개 세션 동시 진행
               </span>
             </div>
 
@@ -365,7 +455,7 @@ export default function ProgramSection() {
                           <span className="px-2.5 py-0.5 rounded-md bg-blue-700 text-white font-mono font-bold text-xs">
                             {room.sessionCode}
                           </span>
-                          <span className="font-bold text-xs text-slate-500">
+                          <span className="font-bold text-xs text-blue-900 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200">
                             {room.roomNumber}
                           </span>
                         </div>
@@ -376,7 +466,7 @@ export default function ProgramSection() {
                           {room.themeEn}
                         </div>
                         <div className="text-xs font-bold text-blue-900 mt-2">
-                          사회자: {room.moderator}
+                          사회자 (Chair): {room.moderator}
                         </div>
                       </div>
 
@@ -389,17 +479,21 @@ export default function ProgramSection() {
                     {isExpanded && (
                       <div className="p-4 sm:p-5 bg-slate-50/70 border-t border-slate-100 space-y-3.5 animate-fadeIn">
                         <div className="text-[11px] font-black text-slate-500 uppercase tracking-wider">
-                          발표 논문 목록 ({room.papers.length}편)
+                          세부 발표 일정 ({room.papers.length}편)
                         </div>
                         {room.papers.map((paper, pIdx) => (
                           <div
                             key={pIdx}
                             className="bg-white p-3.5 rounded-xl border border-slate-200 text-xs shadow-2xs space-y-1.5"
                           >
-                            <div className="font-extrabold text-slate-950 leading-snug">
-                              {pIdx + 1}. {paper.title}
+                            <div className="flex items-center justify-between gap-2 text-[11px] text-blue-800 font-mono font-bold">
+                              <span>발표 #{pIdx + 1}</span>
+                              {paper.time && <span>{paper.time}</span>}
                             </div>
-                            <div className="flex flex-col sm:flex-row sm:items-center justify-between text-[11px] text-slate-600 gap-1 pt-1 border-t border-slate-100">
+                            <div className="font-extrabold text-slate-950 text-sm leading-snug">
+                              {paper.title}
+                            </div>
+                            <div className="flex flex-col sm:flex-row sm:items-center justify-between text-[11px] text-slate-600 gap-1 pt-1.5 border-t border-slate-100">
                               <div>
                                 <span className="font-bold text-blue-900">발표자:</span> {paper.presenter}
                               </div>
@@ -423,26 +517,26 @@ export default function ProgramSection() {
           <div className="bg-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-sm">
             <h3 className="text-lg font-black text-white mb-4 flex items-center gap-2">
               <Sparkles className="w-5 h-5 text-amber-400" />
-              <span>후속 일정: 연구윤리교육 · 확대이사회 및 정기총회 · 폐회</span>
+              <span>후속 일정 (Closing Program)</span>
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
               <div className="bg-slate-800/90 p-4 rounded-2xl border border-slate-700">
                 <div className="text-purple-400 font-mono font-bold mb-1">16:05 ~ 16:25 (20분)</div>
-                <div className="font-extrabold text-white text-sm">① 연구윤리교육</div>
-                <div className="text-xs text-slate-400 mt-1">학술 논문 및 AI 활용 연구 윤리 가이드라인 교육</div>
+                <div className="font-extrabold text-white text-sm">연구윤리교육 (Research Ethics)</div>
+                <div className="text-xs text-slate-400 mt-1">학술 논문 및 AI 활용 연구 윤리 교육</div>
               </div>
 
               <div className="bg-slate-800/90 p-4 rounded-2xl border border-slate-700">
                 <div className="text-blue-400 font-mono font-bold mb-1">16:25 ~ 16:55 (30분)</div>
-                <div className="font-extrabold text-white text-sm">② 확대이사회 및 정기총회</div>
-                <div className="text-xs text-slate-400 mt-1">학회 운영 보고, 학술지 결산 및 정기 안건 의결</div>
+                <div className="font-extrabold text-white text-sm">확대이사회 및 정기총회</div>
+                <div className="text-xs text-slate-400 mt-1">Board & General Meeting</div>
               </div>
 
               <div className="bg-slate-800/90 p-4 rounded-2xl border border-slate-700">
                 <div className="text-amber-400 font-mono font-bold mb-1">17:00 ~</div>
-                <div className="font-extrabold text-white text-sm">③ 폐회 및 만찬</div>
-                <div className="text-xs text-slate-400 mt-1">학술대회 공식 폐회 및 참가자 만찬 네트워킹</div>
+                <div className="font-extrabold text-white text-sm">폐회 및 만찬 (Closing & Dinner)</div>
+                <div className="text-xs text-slate-400 mt-1">학술대회 공식 폐회 및 만찬 네트워킹</div>
               </div>
             </div>
           </div>

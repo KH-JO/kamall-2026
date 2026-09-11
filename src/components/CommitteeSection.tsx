@@ -2,23 +2,23 @@
 
 import React from 'react';
 import { conferenceConfig } from '@/config/conferenceConfig';
-import { Users, Award, HeartHandshake, ShieldCheck } from 'lucide-react';
+import { Users, Award, HeartHandshake, ShieldCheck, Building2 } from 'lucide-react';
 
 export default function CommitteeSection() {
-  const { committee, sponsors } = conferenceConfig;
+  const { committee, sponsors, organizerInfo, hostInfo } = conferenceConfig;
 
   return (
     <section id="committee" className="py-16 bg-slate-50 text-slate-900 relative border-b border-slate-200/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header (Compact) */}
+        {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-10">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-100 border border-purple-200 text-purple-900 text-xs font-bold mb-2 shadow-2xs">
             <Users className="w-3.5 h-3.5 text-purple-700" />
             ORGANIZING COMMITTEE & SPONSORS
           </div>
           <h2 className="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight">
-            조직위원회 및 후원·협력 기업
+            조직위원회 및 후원 기업
           </h2>
         </div>
 
@@ -74,57 +74,77 @@ export default function CommitteeSection() {
           </div>
         </div>
 
-        {/* Sponsors Grid (Balanced Logo Sizing across all 10 organizations) */}
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-6">
-            <h3 className="text-xl font-black text-slate-950 flex items-center justify-center gap-2">
-              <HeartHandshake className="w-5 h-5 text-purple-700" />
-              <span>후원 및 협력 기관·기업</span>
-            </h3>
-            <p className="text-xs text-slate-500 mt-1">
-              한국멀티미디어언어교육학회 2026 연례학술대회를 함께 후원하고 응원해주시는 파트너입니다.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3.5">
-            {sponsors.map((sp, idx) => (
-              <div
-                key={idx}
-                className="bg-white border border-slate-200 rounded-2xl p-3 sm:p-3.5 flex flex-col items-center justify-between text-center hover:border-purple-300 hover:shadow-xs transition-all group"
-              >
-                {/* Unified, Perfectly Balanced Logo Frame */}
-                <div className="w-full h-11 flex items-center justify-center mb-1.5 px-2">
-                  {sp.logoUrl ? (
-                    <img
-                      src={sp.logoUrl}
-                      alt={sp.name}
-                      className="max-h-7 sm:max-h-8 max-w-[110px] w-auto object-contain group-hover:scale-105 transition-transform"
-                    />
-                  ) : (
-                    <div className="w-8 h-8 rounded-lg bg-purple-50 text-purple-800 font-bold flex items-center justify-center text-xs">
-                      {sp.name.slice(0, 2)}
-                    </div>
-                  )}
-                </div>
-
-                {/* Text & Tier Badge */}
-                <div className="w-full pt-2 border-t border-slate-100">
-                  <div className="text-[11px] sm:text-xs font-black text-slate-900 leading-tight line-clamp-1">
-                    {sp.name}
-                  </div>
-                  <div className={`text-[9.5px] font-bold mt-1 px-2 py-0.5 rounded-full inline-block ${
-                    sp.tier === '공동 주관' 
-                      ? 'bg-emerald-50 text-emerald-800 border border-emerald-200'
-                      : sp.tier === '학술 후원'
-                        ? 'bg-blue-50 text-blue-800 border border-blue-200'
-                        : 'bg-purple-50 text-purple-800 border border-purple-200'
-                  }`}>
-                    {sp.tier}
-                  </div>
-                </div>
+        {/* Organizer & Sponsors Grid */}
+        <div className="max-w-5xl mx-auto space-y-6">
+          
+          {/* Organizer Card */}
+          <div className="bg-white border border-slate-200 rounded-3xl p-5 sm:p-6 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-800 flex-shrink-0">
+                <Building2 className="w-6 h-6" />
               </div>
-            ))}
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100/70 px-2.5 py-0.5 rounded-md">
+                  주관 | ORGANIZER
+                </span>
+                <h3 className="text-lg font-black text-slate-950 mt-1">
+                  {organizerInfo.name}
+                </h3>
+                <p className="text-xs text-slate-500">
+                  {organizerInfo.nameEng}
+                </p>
+              </div>
+            </div>
+            <div className="h-12 flex items-center px-3 bg-slate-50 rounded-xl border border-slate-200">
+              <img src={organizerInfo.logoUrl} alt={organizerInfo.name} className="max-h-8 w-auto object-contain" />
+            </div>
           </div>
+
+          {/* Sponsors Grid */}
+          <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xs">
+            <div className="text-center mb-6">
+              <h3 className="text-xl font-black text-slate-950 flex items-center justify-center gap-2">
+                <HeartHandshake className="w-5 h-5 text-purple-700" />
+                <span>후원사 (SPONSORS)</span>
+              </h3>
+              <p className="text-xs text-slate-500 mt-1">
+                한국멀티미디어언어교육학회 2026 연례학술대회를 함께 후원해 주시는 파트너 기업입니다.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3.5">
+              {sponsors.map((sp, idx) => (
+                <div
+                  key={idx}
+                  className="bg-slate-50 border border-slate-200 rounded-2xl p-3 sm:p-3.5 flex flex-col items-center justify-between text-center hover:border-purple-300 hover:shadow-xs transition-all group"
+                >
+                  <div className="w-full h-11 flex items-center justify-center mb-1.5 px-2">
+                    {sp.logoUrl ? (
+                      <img
+                        src={sp.logoUrl}
+                        alt={sp.name}
+                        className="max-h-7 sm:max-h-8 max-w-[110px] w-auto object-contain group-hover:scale-105 transition-transform"
+                      />
+                    ) : (
+                      <div className="w-8 h-8 rounded-lg bg-purple-50 text-purple-800 font-bold flex items-center justify-center text-xs">
+                        {sp.name.slice(0, 2)}
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="w-full pt-2 border-t border-slate-200/80">
+                    <div className="text-[11px] sm:text-xs font-black text-slate-950 leading-tight line-clamp-1">
+                      {sp.name}
+                    </div>
+                    <div className="text-[9.5px] font-bold mt-1 px-2 py-0.5 rounded-full inline-block bg-purple-100 text-purple-900 border border-purple-200">
+                      {sp.tier}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
         </div>
 
       </div>

@@ -20,6 +20,7 @@ export interface ImportantDate {
 }
 
 export interface PaperPresentation {
+  time?: string;
   title: string;
   presenter: string;
   discussant: string;
@@ -33,6 +34,11 @@ export interface ParallelSessionRoom {
   themeEn: string;
   moderator: string;
   papers: PaperPresentation[];
+}
+
+export interface PosterPresentation {
+  title: string;
+  presenter: string;
 }
 
 export interface FeeItem {
@@ -59,14 +65,14 @@ export const conferenceConfig = {
     theme: "AI for All: Establishing Practical AI Infrastructure for Inclusive Language Learning",
     themeKo: "모두를 위한 인공지능: 포용적 언어 학습을 위한 실용적 AI 인프라 구축",
     themeSub: "Establishing Practical AI Infrastructure for Inclusive Language Learning",
-    dateRange: "2026년 10월 17일(토) 10:00 ~ 17:00 (등록 09:30 ~)",
+    dateRange: "2026년 10월 17일 (토) 10:00 ~ 17:00 (등록 09:30 ~)",
     startDateIso: "2026-10-17T10:00:00+09:00",
-    venueName: "충주 건국대학교 글로컬캠퍼스",
+    venueName: "충주 건국대학교 글로컬캠퍼스 (인문사회관 K6)",
     venueShort: "건국대학교 글로컬캠퍼스",
-    venueAddress: "충청북도 충주시 충원대로 268 건국대학교 GLOCAL(글로컬)캠퍼스",
+    venueAddress: "충청북도 충주시 충원대로 268 건국대학교 GLOCAL(글로컬)캠퍼스 인문사회관(K6)",
     venueNotice: "판교역에서 KTX-이음 탑승 시 충주역까지 약 1시간 소요 (교통 편리)",
     host: "한국멀티미디어언어교육학회 (KAMALL)",
-    coHosts: ["건국대학교 글로컬캠퍼스"],
+    organizer: "건국대학교 글로컬캠퍼스 (KONKUK UNIVERSITY GLOCAL CAMPUS)",
     logoUrl: "/images/kamall-logo.png",
     posterUrl: "/images/kamall-2026-poster.jpg",
   },
@@ -79,7 +85,7 @@ export const conferenceConfig = {
     imageUrl: "/images/president-shindongkwang.png",
     paragraphs: [
       "존경하는 한국멀티미디어언어교육학회(KAMALL) 회원 여러분, 그리고 국내외 언어교육 및 에듀테크 연구자 여러분, 안녕하십니까.",
-      "청명한 가을 하늘이 아름다운 결실의 계절 10월을 맞이하여, 회원 여러분의 가정에 늘 건강과 행복이 가득하기를 기원합니다. 🍁🍂",
+      "청명한 가을 하늘과 오곡백과가 무르익는 결실의 계절 10월을 맞이하여, 회원 여러분의 가정과 연구실에 늘 건강과 행복이 가득하기를 기원합니다. 🍁🍂",
       "올해 2026년 KAMALL 연례학술대회는 'AI for All: Establishing Practical AI Infrastructure for Inclusive Language Learning (모두를 위한 인공지능: 포용적 언어 학습을 위한 실용적 AI 인프라 구축)'이라는 시의적절하고 뜻깊은 대주제로 10월 17일(토) 건국대학교 글로컬캠퍼스에서 개최됩니다.",
       "생성형 AI와 초거대 언어모델의 급속한 확산은 언어 교육의 교수법, 학습자 상호작용, 평가 체계 전반에 패러다임 전환을 이끌고 있습니다. 그러나 이러한 기술적 혁신이 소수의 특권이 아닌 모든 학습자에게 공평하고 실질적인 교육적 혜택으로 전달되기 위해서는 학교와 교육 현장에 적합한 '실용적 AI 인프라'의 확립이 무엇보다 필수적입니다.",
       "이번 학술대회는 국내외 최고의 연구자들과 교육 전문가, 에듀테크 기업이 함께 모여 AI 기반 언어 교육의 포용성과 실천적 대안을 심도 있게 모색하는 지혜의 장이 될 것입니다. 가을의 정취가 아름다운 건국대 글로컬캠퍼스에서 회원 여러분을 반갑게 뵙기를 고대합니다.",
@@ -94,8 +100,8 @@ export const conferenceConfig = {
     imageUrl: "/images/chair-leehyejin.png",
     paragraphs: [
       "존경하는 KAMALL 회원 여러분 및 학술대회 참가자 여러분, 2026년 한국멀티미디어언어교육학회 연례학술대회에 오신 것을 진심으로 환영합니다. ✨",
-      "이번 학술대회는 인공지능이 교육 현장에 깊숙이 뿌리내리는 전환점에서, '모두를 위한 AI'라는 교육적 가치를 실현하고자 총 22편의 우수 학술 연구와 심층 워크숍, 국내외 저명 석학들의 기조·플래너리 강연을 정성껏 준비하였습니다.",
-      "오전의 통찰력 있는 기조 및 플래너리 강연에 이어, 오후에는 말하기·듣기, 생성형 AI 쓰기 및 피드백, 코퍼스·NLP 언어 진단, 학습자 요인과 국제교류에 이르는 4개 분과 세션에서 치열하고도 따뜻한 학문적 담론이 펼쳐질 예정입니다.",
+      "이번 학술대회는 인공지능이 교육 현장에 깊숙이 뿌리내리는 전환점에서, '모두를 위한 AI'라는 교육적 가치를 실현하고자 총 22편의 구두 발표와 2편의 포스터 세션, 심층 워크숍, 국내외 저명 석학들의 기조·플래너리 강연을 정성껏 준비하였습니다.",
+      "오전의 통찰력 있는 기조 및 플래너리 강연에 이어, 오후에는 말하기·듣기, 생성형 AI 쓰기·피드백·수업 설계, 코퍼스·NLP 언어 진단, 교사 전문성과 교육과정에 이르는 4개 분과 세션에서 치열하고도 따뜻한 학문적 담론이 펼쳐질 예정입니다.",
       "전국 각지에서 충주 건국대 글로컬캠퍼스로 모여주실 연구자 및 현장 교사 여러분께 깊은 감사를 드리며, 본 대회가 서로의 지혜를 나누고 미래 언어 교육의 비전을 함께 세우는 뜻깊은 교류의 장이 되기를 소망합니다. 회원 여러분의 많은 관심과 적극적인 참여를 부탁드립니다.",
     ],
   },
@@ -129,10 +135,10 @@ export const conferenceConfig = {
     {
       id: "conference-day",
       title: "2026 KAMALL 학술대회 개최",
-      dateStr: "2026년 10월 17일(토) 10:00 ~ 17:00",
+      dateStr: "2026년 10월 17일 (토) 10:00 ~ 17:00",
       isoDate: "2026-10-17",
       status: "upcoming",
-      description: "충주 건국대학교 글로컬캠퍼스 본 대회 개최 (등록 09:30 ~)",
+      description: "건국대학교 글로컬캠퍼스 인문사회관(K6) 개최 (등록 09:30 ~)",
     },
   ] as ImportantDate[],
 
@@ -142,7 +148,7 @@ export const conferenceConfig = {
       id: "spk-keynote",
       name: "이장호 교수",
       affiliation: "중앙대학교 (Chung-Ang University)",
-      role: "기조강연 | Keynote",
+      role: "기조강연 | Keynote Speech",
       speakerType: "keynote",
       imageUrl: "/images/speaker-lee-jangho.jpg",
       title: "Reconceptualizing L2 Instruction in the GenAI Era: A GenAI-Mediated Activity Theory Framework",
@@ -173,10 +179,17 @@ export const conferenceConfig = {
     },
   ] as KeynoteSpeaker[],
 
-  // 2부 학술발표 (온·오프라인 병행 22편 세부 데이터)
+  // 제1부 총괄 정보
+  part1Info: {
+    room: "인문사회관(K6) 112호",
+    moderator: "임관혁 (건국대학교 글로컬캠퍼스)",
+    sponsorSessionDetail: "기념촬영 및 중식 / 후원사 (플랭Plang & 아이오나AIONA & 마이티쳐코리아) 발표",
+  },
+
+  // 2부 학술발표 I (13:30 ~ 14:50) — 최종 수정 반영
   parallelSessionsPart1: [
     {
-      roomNumber: "제1발표실 (101호)",
+      roomNumber: "인문사회관 206호",
       roomName: "제1발표실",
       sessionCode: "Session ①",
       themeKo: "AI 기반 말하기·듣기 교육",
@@ -184,59 +197,67 @@ export const conferenceConfig = {
       moderator: "강주훈 (한국교통대학교)",
       papers: [
         {
-          title: "AI-Based Spoken Interaction for Listening-Oriented Learning in EFL Classrooms",
+          time: "13:30 ~ 13:50",
+          title: "AI-인간 협업 제작 vs. 인간 제작 퀴즈의 성취도 및 인식의 비교",
+          presenter: "오경미 (동덕여자대학교)",
+          discussant: "이지영 (성균관대학교)",
+        },
+        {
+          time: "13:50 ~ 14:10",
+          title: "대학 EFL 강좌에서 듣기 중심 학습을 위한 AI기반 구어 상호작용 과제",
           presenter: "하종범 (국립금오공과대학교)",
-          discussant: "이지영 (한양대학교)",
+          discussant: "오경미 (동덕여자대학교)",
         },
         {
-          title: "Development and Evaluation of Customized Chatbots for Elementary English Education: Deriving Instructor-Informed Prompt Design Principles",
-          presenter: "서소담 · 이동주 (한국교원대학교)",
-          discussant: "석소연 (전북대학교)",
-        },
-        {
+          time: "14:10 ~ 14:30",
           title: "Effect of an AI-based Application on Enhancing the L2 Listening Comprehension of Chinese EFL Students",
-          presenter: "Lin Yini (이화여자대학교)",
-          discussant: "Praxi Castillo (Pai Chai University)",
+          presenter: "Yini Lin (Ewha Womans University)",
+          discussant: "하종범 (국립금오공과대학교)",
         },
         {
+          time: "14:30 ~ 14:50",
           title: "Effects of Human–AI Interaction on L2 Speaking and Oral Summarization",
           presenter: "Hye Won Shin (Sejong University)",
-          discussant: "송기원 (경북대학교)",
+          discussant: "Yini Lin (Ewha Womans University)",
         },
       ]
     },
     {
-      roomNumber: "제2발표실 (102호)",
+      roomNumber: "인문사회관 207호",
       roomName: "제2발표실",
       sessionCode: "Session ②",
-      themeKo: "생성형 AI 활용 쓰기·피드백·교수법",
-      themeEn: "GenAI-Assisted Writing, Feedback & Pedagogy",
-      moderator: "김미숙 (경희대학교)",
+      themeKo: "생성형 AI 활용 쓰기·피드백·수업 설계",
+      themeEn: "GenAI-Assisted Writing, Feedback & Instructional Design",
+      moderator: "최고은 (한국교원대학교)",
       papers: [
         {
+          time: "13:30 ~ 13:50",
           title: "Negotiating AI Feedback in English Writing: Feedback Uptake and Metalinguistic Awareness among Korean EFL University Students",
-          presenter: "Kwon, Eunsook (Daegu National University of Education)",
-          discussant: "석소연 (전북대학교)",
+          presenter: "Eunsook Kwon (Daegu National University of Education)",
+          discussant: "이장호 (중앙대학교)",
         },
         {
+          time: "13:50 ~ 14:10",
+          title: "왜 어떤 문제는 아는 학생만 풀리는가: 문항의 포용성과 구인무관 난이도(construct-irrelevant difficulty)를 진단하는 온톨로지 기반 AI 틀",
+          presenter: "김삼유 (양영교육) · 방정선 (대전시청자미디어센터)",
+          discussant: "권은숙 (대구교육대학교)",
+        },
+        {
+          time: "14:10 ~ 14:30",
           title: "Beyond the Prompt: GenAI Multimodal Composition and L2 Writing Development",
           presenter: "Yohan Hwang · Jeong-Eun Kim (Jeonbuk National University)",
-          discussant: "Praxi Castillo (Pai Chai University)",
+          discussant: "김삼유 (양영교육)",
         },
         {
-          title: "에세이 평가에서 언어 측면 평가의 총체적 평가 대체 가능성 연구",
-          presenter: "최민석 · 이동주 (한국교원대학교)",
-          discussant: "송기원 (경북대학교)",
-        },
-        {
+          time: "14:30 ~ 14:50",
           title: "The Differential Impact of Generative-AI and Human Feedback on Korean EFL Students' Argumentative Writing",
-          presenter: "Park, Punahm (Seo Kyeong University) · Kim, Taiwon (Sogang University)",
-          discussant: "장은정 (조치원대동초등학교)",
+          presenter: "Punahm Park (Seo Kyeong University) · Taiwon Kim (Sogang University)",
+          discussant: "석소연 (전북대학교)",
         },
       ]
     },
     {
-      roomNumber: "제3발표실 (103호, 온라인 병행)",
+      roomNumber: "인문사회관 208호",
       roomName: "제3발표실",
       sessionCode: "Session ③",
       themeKo: "코퍼스·평가·NLP 기반 언어 진단",
@@ -244,62 +265,71 @@ export const conferenceConfig = {
       moderator: "이송은 (동의대학교)",
       papers: [
         {
-          title: "Exploring an AI-Human Workflow for Formative Quiz Development: Learning Outcomes and Student Perceptions",
-          presenter: "Kyung-Mi O (Dongduk Women's University)",
-          discussant: "Praxi Castillo (Pai Chai University)",
+          time: "13:30 ~ 13:50",
+          title: "Development and Evaluation of Customized Chatbots for Elementary English Education: Deriving Instructor-Informed Prompt Design Principles",
+          presenter: "Sodam Seo · Dong Ju Lee (한국교원대학교)",
+          discussant: "이원지 (한국교원대학교)",
         },
         {
-          title: "왜 어떤 문제는 아는 학생만 풀리는가: 문항의 포용성과 구인무관 난이도(construct-irrelevant difficulty)를 진단하는 온톨로지 기반 AI 틀",
-          presenter: "김삼유 (양영교육) · 방정선 (대전시청자미디어센터)",
-          discussant: "송기원 (경북대학교)",
+          time: "13:50 ~ 14:10",
+          title: "에세이 평가에서 언어 측면 평가의 총체적 평가 대체 가능성 연구",
+          presenter: "최민석 · 이동주 (한국교원대학교)",
+          discussant: "서소담 (한국교원대학교)",
         },
         {
+          time: "14:10 ~ 14:30",
           title: "코퍼스를 활용한 언어자료 기반 학습법(Data-Driven Learning)이 초등학생의 영어 문법 학습에 미치는 효과 연구",
           presenter: "송부연 · 이동주 (한국교원대학교)",
-          discussant: "장은정 (조치원대동초등학교)",
+          discussant: "최민석 (한국교원대학교)",
         },
         {
+          time: "14:30 ~ 14:50",
           title: "인공지능 기반 언어 자료 기반 학습 웹 도구(AI-DDL)의 설계와 구현",
           presenter: "이원지 · 이동주 (한국교원대학교)",
-          discussant: "Jayoung Song (광주교육대학교)",
+          discussant: "송부연 (한국교원대학교)",
         },
       ]
     },
     {
-      roomNumber: "제4발표실 (104호)",
+      roomNumber: "인문사회관 211호",
       roomName: "제4발표실",
       sessionCode: "Session ④",
-      themeKo: "학습자 요인과 교육과정·국제교류",
-      themeEn: "Learner Factors, Curriculum & Intercultural Exchange",
-      moderator: "안유영 (전남대학교)",
+      themeKo: "교사 전문성과 학습자 요인·교육과정",
+      themeEn: "Teacher Practice, Learner Factors & Curriculum Design",
+      moderator: "이혜진 (원광대학교)",
       papers: [
         {
+          time: "13:30 ~ 13:50",
           title: "Innovating Language Education: Integrating Generative AI into Project-Based Language Learning in South Korean Higher Education",
           presenter: "Ryan Hatcher (Hannam University)",
-          discussant: "송기원 (경북대학교)",
+          discussant: "송자영 (광주교육대학교)",
         },
         {
+          time: "13:50 ~ 14:10",
           title: "지속가능한 영어교육과를 위한 새로운 가능성 탐색: 생성형 AI 기반 Project-Based Service Learning 사례",
           presenter: "이혜진 (원광대학교) · 이가영 (숭실대학교)",
-          discussant: "장은정 (조치원대동초등학교)",
+          discussant: "권은비 (한양여자대학교)",
         },
         {
+          time: "14:10 ~ 14:30",
           title: "Mind Mapping for Vocabulary Learning: Modality, Delivery, and the Role of Mind Map Quality",
-          presenter: "TAEYEON HWANG (Hankuk University of Foreign Studies)",
-          discussant: "Jayoung Song (광주교육대학교)",
+          presenter: "Taeyeon Hwang (Hankuk University of Foreign Studies)",
+          discussant: "이가영 (숭실대학교)",
         },
         {
-          title: "한국 고등학교 EFL 학습자들의 성장 마인드셋과 영어 어휘지식의 관계: 어휘학습 자기조절능력의 매개효과",
-          presenter: "정다빈 · 이동주 (한국교원대학교)",
-          discussant: "이지영 (한양대학교)",
+          time: "14:30 ~ 14:50",
+          title: "Beyond Pages, Across Realities: Contextual and Pedagogical Factors Shaping Reading Engagement in AR and Paper-Based Environments",
+          presenter: "Jayoung Song (Gwangju National University of Education)",
+          discussant: "Ryan Hatcher (Hannam University)",
         },
       ]
     },
   ] as ParallelSessionRoom[],
 
+  // 2부 학술발표 II (15:05 ~ 16:05) — 최종 수정 반영
   parallelSessionsPart2: [
     {
-      roomNumber: "제1발표실 (101호)",
+      roomNumber: "인문사회관 206호",
       roomName: "제1발표실",
       sessionCode: "Session ⑤",
       themeKo: "AI 기반 말하기·듣기 교육",
@@ -307,34 +337,55 @@ export const conferenceConfig = {
       moderator: "백지운 (중부대학교)",
       papers: [
         {
-          title: "When Does Corrective Feedback Become Mediation? On-Screen Feedback in AI-Based L2 Speaking App Interaction",
-          presenter: "이지영 · 박유정 (한양대학교 / 성균관대학교)",
-          discussant: "하종범 (국립금오공과대학교)",
+          time: "15:05 ~ 15:25",
+          title: "AI 기반 말하기 앱의 교정적 피드백은 언제 매개되는가?",
+          presenter: "이지영 · 박유정 (성균관대학교)",
+          discussant: "신혜원 (세종대학교)",
+        },
+        {
+          time: "15:25 ~ 15:45",
+          title: "국제교류 협력 프로젝트 기반 초등학생 영어 의사소통 역량 향상 효과",
+          presenter: "장은정 · 이동주 (한국교원대학교)",
+          discussant: "이혜진 (원광대학교)",
+        },
+        {
+          time: "15:45 ~ 16:05",
+          title: "모두를 위한 말하기: AI 기반 정서적 스캐폴딩과 초보 한국어 학습자의 발화 참여",
+          presenter: "송경은 (Indiana State University)",
+          discussant: "김태원 (서강대학교)",
         },
       ]
     },
     {
-      roomNumber: "제2발표실 (102호)",
+      roomNumber: "인문사회관 207호",
       roomName: "제2발표실",
       sessionCode: "Session ⑥",
-      themeKo: "생성형 AI 활용 쓰기·피드백·교수법",
-      themeEn: "GenAI-Assisted Writing, Feedback & Pedagogy",
+      themeKo: "생성형 AI 활용 쓰기·피드백·수업 설계",
+      themeEn: "GenAI-Assisted Writing, Feedback & Instructional Design",
       moderator: "조규희 (경인교육대학교)",
       papers: [
         {
-          title: "생성형 AI 시대 영어교사의 교수 실천과 정체성 재구성: GMAT(GenAI-Mediated Activity Theory) 기반 자문화기술지 연구",
-          presenter: "석소연 (전북대학교)",
-          discussant: "Kwon, Eunsook (Daegu National University of Education)",
-        },
-        {
+          time: "15:05 ~ 15:25",
           title: "From Prompting to Pedagogy: A Practical Framework for Integrating Generative AI into English Language Teaching (수업시연)",
           presenter: "Praxi Castillo (Pai Chai University)",
-          discussant: "Park, Punahm (Seo Kyeong University)",
+          discussant: "Punahm Park (Seo Kyeong University)",
+        },
+        {
+          time: "15:25 ~ 15:45",
+          title: "Designing Human-AI Learning Environments for Independent Writers: A Case Study of Phased AI Scaffolding in Process-Oriented L2 Writing with Chinese EFL Students",
+          presenter: "Haoran Dong · Hyoshin Lee (Konkuk University)",
+          discussant: "Praxi Castillo (Pai Chai University)",
+        },
+        {
+          time: "15:45 ~ 16:05",
+          title: "Strategic Prompting and Structured Prompt Logging in AI-Assisted Writing",
+          presenter: "Jiseon Kim (Hankuk University of Foreign Studies)",
+          discussant: "Yini Lin (Ewha Womans University)",
         },
       ]
     },
     {
-      roomNumber: "제3발표실 (103호, 온라인 병행)",
+      roomNumber: "인문사회관 208호",
       roomName: "제3발표실",
       sessionCode: "Session ⑦",
       themeKo: "코퍼스·평가·NLP 기반 언어 진단",
@@ -342,35 +393,71 @@ export const conferenceConfig = {
       moderator: "황요한 (전북대학교)",
       papers: [
         {
-          title: "Evaluating Cloze-Solving Behaviour across Model Architectures: A Comparative Study of BERT, GPT-2, and Korean CSAT Readers",
+          time: "15:05 ~ 15:25",
+          title: "언어모델은 독자의 빈칸 해결 양상 분포와 얼마나 정렬되는가?: 수능 영어 빈칸 추론 문항에 대한 양방향·자기회기 언어모델의 독자 응답 정렬 비교",
           presenter: "송기원 · 문성민 (경북대학교)",
-          discussant: "이원지 (한국교원대학교)",
+          discussant: "박은경 (창원대학교)",
+        },
+        {
+          time: "15:25 ~ 15:45",
+          title: "대학 영어 수업에서 자기조절학습전략과 생성형 AI 활용이 학업성취도에 미치는 영향의 변화",
+          presenter: "김정태 (배재대학교) · 박은경 (창원대학교)",
+          discussant: "송기원 (경북대학교)",
+        },
+        {
+          time: "15:45 ~ 16:05",
+          title: "From Tool to Tutor: Exploring ChatGPT's Role in EFL Reading (Online)",
+          presenter: "Areum Lee (Hanshin University)",
+          discussant: "김정태 (배재대학교)",
         },
       ]
     },
     {
-      roomNumber: "제4발표실 (104호)",
+      roomNumber: "인문사회관 211호",
       roomName: "제4발표실",
       sessionCode: "Session ⑧",
-      themeKo: "학습자 요인과 교육과정·국제교류",
-      themeEn: "Learner Factors, Curriculum & Intercultural Exchange",
-      moderator: "이혜진 (원광대학교)",
+      themeKo: "교사 전문성과 학습자 요인·교육과정",
+      themeEn: "Teacher Practice, Learner Factors & Curriculum Design",
+      moderator: "이가영 (숭실대학교)",
       papers: [
         {
-          title: "온라인 국제교류 활동이 초등학생의 영어 의사소통 역량에 미치는 영향",
-          presenter: "장은정 · 이동주 (한국교원대학교)",
-          discussant: "Ryan Hatcher (Hannam University)",
+          time: "15:05 ~ 15:25",
+          title: "한국 고등학교 EFL 학습자들의 성장 마인드셋과 영어 어휘지식의 관계: 어휘학습 자기조절능력의 매개효과",
+          presenter: "정다빈 · 이동주 (한국교원대학교)",
+          discussant: "황태연 (한국외국어대학교)",
         },
         {
-          title: "Beyond Pages, Across Realities: Contextual and Pedagogical Factors Shaping Reading Engagement in AR and Paper-Based Environments",
-          presenter: "Jayoung Song (Gwangju National University of Education)",
-          discussant: "정다빈 (한국교원대학교)",
+          time: "15:25 ~ 15:45",
+          title: "포용적 한국어 교육을 위한 교재 내 외모·연령 편향 분석 기준의 설계",
+          presenter: "김지학 (가천대학교)",
+          discussant: "이송은 (동의대학교)",
+        },
+        {
+          time: "15:45 ~ 16:05",
+          title: "생성형 AI 시대 영어교사의 교수 실천과 정체성 재구성: GMAT(GenAI-Mediated Activity Theory) 기반 자문화기술지 연구",
+          presenter: "석소연 (전북대학교)",
+          discussant: "김지학 (가천대학교)",
         },
       ]
     },
   ] as ParallelSessionRoom[],
 
-  // 참가비 및 등록비 (유저 첨부 이미지 정확 반영)
+  // 포스터 세션 (인문사회관 K6 112호 앞 진행)
+  posterSessions: {
+    location: "인문사회관(K6) 112호 앞",
+    papers: [
+      {
+        title: "KWL-Mediated Digital Nonfiction Read-Alouds in an After-School Program",
+        presenter: "Lauren Kwak (Asia Pacific International School)",
+      },
+      {
+        title: "Korean University EFL Learners’ Perceived Effectiveness of AI-Mediated Speaking Practice: A CALL Effectiveness Framework",
+        presenter: "Huidan Zheng (Konkuk University Glocal Campus)",
+      },
+    ] as PosterPresentation[],
+  },
+
+  // 참가비 및 등록비
   registration: {
     bankInfo: {
       bankName: "국민은행",
@@ -391,7 +478,8 @@ export const conferenceConfig = {
   // 행사장 및 오시는 길
   venue: {
     name: "건국대학교 글로컬(GLOCAL)캠퍼스",
-    address: "충청북도 충주시 충원대로 268 건국대학교 글로컬캠퍼스",
+    building: "인문사회관(K6)",
+    address: "충청북도 충주시 충원대로 268 건국대학교 글로컬캠퍼스 인문사회관(K6)",
     locationHighlight: "판교역에서 KTX-이음으로 충주역까지 약 1시간 소요!",
     mapEmbedQuery: "건국대학교+글로컬캠퍼스",
     ktxInfo: [
@@ -404,7 +492,7 @@ export const conferenceConfig = {
       "충주시외버스터미널 앞에서 시내버스(100번대, 300번대) 탑승 또는 택시 이용 (약 10분)",
     ],
     carAndParking: [
-      "네비게이션 '건국대학교 글로컬캠퍼스' 검색",
+      "네비게이션 '건국대학교 글로컬캠퍼스 인문사회관' 검색",
       "학술대회 참가 차량은 교내 전 구역 무료 주차가 가능하도록 지원됩니다.",
     ],
   },
@@ -436,18 +524,27 @@ export const conferenceConfig = {
     ] as CommitteeMember[],
   },
 
-  // 후원사 및 협력 기업 (로고 및 티어 반영)
+  // 공식 후원사 및 협력 기업 (프로그램 일정표 상단 배너 기준 정확 반영)
+  hostInfo: {
+    name: "한국멀티미디어언어교육학회",
+    nameEng: "KAMALL (Korea Association of Multimedia-Assisted Language Learning)",
+    role: "주최 | HOST",
+    logoUrl: "/images/kamall-logo.png",
+  },
+  organizerInfo: {
+    name: "건국대학교 글로컬캠퍼스",
+    nameEng: "KONKUK UNIVERSITY GLOCAL CAMPUS",
+    role: "주관 | ORGANIZER",
+    logoUrl: "/images/sponsors/konkuk.png",
+  },
   sponsors: [
-    { name: "건국대학교 GLOCAL캠퍼스", tier: "공동 주관", category: "행사장 및 인프라 지원", logoUrl: "/images/sponsors/konkuk.png" },
-    { name: "한국연구재단 (NRF)", tier: "학술 후원", category: "등재학술지 학술 활동 지원", logoUrl: "/images/sponsors/nrf.svg" },
-    { name: "플랭 (Plang)", tier: "협력 파트너", category: "AI 영어회화 에듀테크", logoUrl: "/images/sponsors/plang.svg" },
-    { name: "AIONA-AI 플랫폼", tier: "협력 파트너", category: "AI 언어교육 플랫폼", logoUrl: "/images/sponsors/aiona.svg" },
-    { name: "비긴즈 (Begins)", tier: "협력 파트너", category: "에듀테크 & 교육 컨설팅", logoUrl: "/images/sponsors/begins.svg" },
-    { name: "하이퍼러닝", tier: "협력 파트너", category: "미래엔 디지털 학습 플랫폼", logoUrl: "/images/sponsors/hyperlearning.svg" },
-    { name: "투폰즈 (TwoPonds)", tier: "협력 파트너", category: "영어교육 전문 출판", logoUrl: "/images/sponsors/twoponds.svg" },
-    { name: "커넥트에듀", tier: "협력 파트너", category: "에듀테크 교육 솔루션", logoUrl: "/images/sponsors/connectedu.svg" },
-    { name: "마이티쳐코리아", tier: "협력 파트너", category: "원어민 화상영어 콘텐츠", logoUrl: "/images/sponsors/myteacher.svg" },
-    { name: "ePublic (이퍼블릭)", tier: "협력 파트너", category: "영어교육 교재 출판", logoUrl: "/images/sponsors/epublic.svg" },
+    { name: "e-PUBLIC (이퍼블릭)", tier: "후원사", category: "영어교육 교재 출판", logoUrl: "/images/sponsors/epublic.svg" },
+    { name: "HYPER LEARNING (하이퍼러닝)", tier: "후원사", category: "미래엔 디지털 학습 플랫폼", logoUrl: "/images/sponsors/hyperlearning.svg" },
+    { name: "TWO PONDS (투폰즈)", tier: "후원사", category: "영어교육 전문 출판", logoUrl: "/images/sponsors/twoponds.svg" },
+    { name: "Plang (플랭)", tier: "후원사", category: "AI 영어회화 에듀테크", logoUrl: "/images/sponsors/plang.svg" },
+    { name: "AIONA (아이오나)", tier: "후원사", category: "AI 언어교육 플랫폼", logoUrl: "/images/sponsors/aiona.svg" },
+    { name: "WIN*Z (윈즈)", tier: "후원사", category: "AI 기술 & 에이전트 솔루션", logoUrl: "/images/sponsors/winz.png" },
+    { name: "마이티쳐코리아", tier: "스폰서 세션 발표", category: "원어민 화상영어 콘텐츠", logoUrl: "/images/sponsors/myteacher.svg" },
   ],
 
   // 문의처
@@ -456,7 +553,7 @@ export const conferenceConfig = {
     email: "kamall2026@gmail.com",
     academicEmail: "academic.kamall@gmail.com",
     homepage: "https://kamall.or.kr",
-    address: "충청북도 충주시 충원대로 268 건국대학교 글로컬캠퍼스 & KAMALL 사무국",
+    address: "충청북도 충주시 충원대로 268 건국대학교 글로컬캠퍼스 인문사회관(K6) & KAMALL 사무국",
     operatingHours: "평일 10:00 ~ 17:00 (학술대회 당일 현장 등록데스크 운영)",
   }
 };
