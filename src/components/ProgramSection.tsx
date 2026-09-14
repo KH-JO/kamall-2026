@@ -2,10 +2,10 @@
 
 import React, { useState } from 'react';
 import { conferenceConfig } from '@/config/conferenceConfig';
-import { Clock, MapPin, User, Coffee, ChevronDown, ChevronUp, Printer, BookOpen, Sparkles, FileText, CheckCircle2 } from 'lucide-react';
+import { Clock, MapPin, User, Coffee, ChevronDown, ChevronUp, Printer, BookOpen, Sparkles, FileText } from 'lucide-react';
 
 export default function ProgramSection() {
-  const { parallelSessionsPart1, parallelSessionsPart2, posterSessions, part1Info, hostInfo, organizerInfo, sponsors } = conferenceConfig;
+  const { parallelSessionsPart1, parallelSessionsPart2, posterSessions, part1Info } = conferenceConfig;
 
   // Track expanded session accordion states (all closed by default)
   const [expandedPart1, setExpandedPart1] = useState<number | null>(null);
@@ -238,39 +238,6 @@ export default function ProgramSection() {
           </div>
 
           {/* ═══════════════════════════════════════════════════════════════════
-              POSTER SESSION HIGHLIGHT BANNER
-             ═══════════════════════════════════════════════════════════════════ */}
-          <div className="bg-gradient-to-r from-purple-900 to-indigo-950 text-white rounded-3xl p-6 shadow-md">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 mb-4 border-b border-white/20">
-              <div className="flex items-center gap-2">
-                <FileText className="w-5 h-5 text-amber-300" />
-                <h4 className="text-lg font-black text-white">
-                  포스터 세션 (Poster Sessions)
-                </h4>
-              </div>
-              <span className="text-xs font-bold text-amber-300 bg-white/10 px-3 py-1 rounded-full border border-white/10">
-                * 장소: {posterSessions.location}
-              </span>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {posterSessions.papers.map((p, idx) => (
-                <div key={idx} className="bg-white/10 backdrop-blur-xs border border-white/15 rounded-2xl p-4">
-                  <div className="text-[11px] font-bold text-purple-200 mb-1">
-                    Poster #{idx + 1}
-                  </div>
-                  <div className="font-bold text-sm sm:text-base text-white leading-snug mb-2">
-                    {p.title}
-                  </div>
-                  <div className="text-xs text-amber-200 font-semibold">
-                    발표자: {p.presenter}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* ═══════════════════════════════════════════════════════════════════
               PART 2: 제2부 학술발표 및 포스터 세션 I (13:30 ~ 14:50)
              ═══════════════════════════════════════════════════════════════════ */}
           <div className="bg-slate-50 border-2 border-slate-300/80 rounded-3xl p-6 sm:p-8 shadow-sm">
@@ -282,6 +249,9 @@ export default function ProgramSection() {
                 <h3 className="text-xl font-black text-slate-950">
                   제2부 학술발표 I — 각 세션을 클릭하면 발표 관련 세부 정보가 표시됩니다.
                 </h3>
+                <p className="text-xs text-slate-500 mt-0.5 font-medium">
+                  * 포스터 세션은 인문사회관(K6) 112호 앞에서 함께 진행됩니다.
+                </p>
               </div>
               <span className="text-xs font-bold text-slate-500 font-mono">
                 총 16편 발표 · 4개 세션 동시 진행
@@ -384,6 +354,9 @@ export default function ProgramSection() {
                 <h3 className="text-xl font-black text-slate-950">
                   제2부 학술발표 II — 각 세션을 클릭하면 발표 관련 세부 정보가 표시됩니다.
                 </h3>
+                <p className="text-xs text-slate-500 mt-0.5 font-medium">
+                  * 포스터 세션은 인문사회관(K6) 112호 앞에서 함께 진행됩니다.
+                </p>
               </div>
               <span className="text-xs font-bold text-slate-500 font-mono">
                 총 12편 발표 · 4개 세션 동시 진행
@@ -465,6 +438,46 @@ export default function ProgramSection() {
                   </div>
                 );
               })}
+            </div>
+          </div>
+
+          {/* ═══════════════════════════════════════════════════════════════════
+              POSTER SESSION (Elegantly proportioned, perfectly harmonious card)
+             ═══════════════════════════════════════════════════════════════════ */}
+          <div className="bg-white border border-slate-200 rounded-3xl p-6 shadow-xs">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 mb-5 border-b border-slate-100">
+              <div className="flex items-center gap-2.5">
+                <div className="w-8 h-8 rounded-xl bg-purple-100 text-purple-800 flex items-center justify-center">
+                  <FileText className="w-4 h-4" />
+                </div>
+                <div>
+                  <h4 className="text-base font-black text-slate-950">
+                    포스터 세션 안내 (Poster Session Info)
+                  </h4>
+                  <div className="text-xs text-slate-500 font-medium">
+                    13:30 ~ 16:05 상시 전시 및 발표자와의 대화
+                  </div>
+                </div>
+              </div>
+              <span className="text-xs font-bold text-purple-900 bg-purple-50 border border-purple-200 px-3 py-1 rounded-full whitespace-nowrap">
+                장소: {posterSessions.location}
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+              {posterSessions.papers.map((p, idx) => (
+                <div key={idx} className="bg-slate-50/80 border border-slate-200 rounded-2xl p-4 text-xs hover:border-purple-300 transition-colors">
+                  <div className="text-[10px] font-black text-purple-800 font-mono mb-1 uppercase tracking-wider">
+                    Poster #{idx + 1}
+                  </div>
+                  <div className="font-bold text-sm text-slate-950 leading-snug mb-2">
+                    {p.title}
+                  </div>
+                  <div className="text-xs text-slate-600 font-medium pt-2 border-t border-slate-200/60">
+                    <span className="font-bold text-slate-900">발표자:</span> {p.presenter}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 

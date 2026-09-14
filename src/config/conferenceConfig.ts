@@ -232,7 +232,7 @@ export const conferenceConfig = {
       sessionCode: "Session ②",
       themeKo: "생성형 AI 활용 쓰기·피드백·수업 설계",
       themeEn: "GenAI-Assisted Writing, Feedback & Instructional Design",
-      moderator: "최고은 (한국교원대학교)",
+      moderator: "최고운 (한국교원대학교)",
       papers: [
         {
           time: "13:30 ~ 13:50",
