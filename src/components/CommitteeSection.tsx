@@ -112,8 +112,8 @@ export default function CommitteeSection() {
               </p>
             </div>
 
-            {/* 7 columns on desktop (lg:grid-cols-7) -> All in ONE row! */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5 sm:gap-3 items-stretch">
+            {/* 6 columns on desktop (lg:grid-cols-6) -> All in ONE row! */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3 items-stretch">
               {sponsors.map((sp, idx) => (
                 <div
                   key={idx}

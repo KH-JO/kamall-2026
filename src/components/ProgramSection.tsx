@@ -2,10 +2,10 @@
 
 import React, { useState } from 'react';
 import { conferenceConfig } from '@/config/conferenceConfig';
-import { Clock, MapPin, User, Coffee, ChevronDown, ChevronUp, Printer, BookOpen, Sparkles, FileText } from 'lucide-react';
+import { Clock, MapPin, User, Coffee, ChevronDown, ChevronUp, Printer, BookOpen, Sparkles, FileText, Download } from 'lucide-react';
 
 export default function ProgramSection() {
-  const { parallelSessionsPart1, parallelSessionsPart2, posterSessions, part1Info } = conferenceConfig;
+  const { parallelSessionsPart1, parallelSessionsPart2, posterSessions, part1Info, meta } = conferenceConfig;
 
   // Track expanded session accordion states (all closed by default)
   const [expandedPart1, setExpandedPart1] = useState<number | null>(null);
@@ -32,7 +32,7 @@ export default function ProgramSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header with Download/Print CTA */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8">
           <div>
             <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-900 text-xs font-black mb-3 shadow-2xs">
               <Clock className="w-3.5 h-3.5 text-purple-700" />
@@ -46,23 +46,30 @@ export default function ProgramSection() {
             </p>
           </div>
 
-          <div className="flex items-center gap-2.5 flex-shrink-0">
-            <button
-              onClick={handlePrint}
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs sm:text-sm border border-slate-200 shadow-2xs transition-colors"
-            >
-              <Printer className="w-4 h-4 text-slate-600" />
-              <span>일정표 인쇄 / PDF 저장</span>
-            </button>
+          <div className="flex flex-wrap items-center gap-2.5 flex-shrink-0">
             <a
-              href={conferenceConfig.registration.registerFormUrl}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={meta.proceedingsPdfUrl}
+              download="KAMALL_2026_학술대회_발표자료집.pdf"
               className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-purple-700 hover:bg-purple-800 text-white font-bold text-xs sm:text-sm shadow-xs transition-colors"
             >
-              <BookOpen className="w-4 h-4 text-purple-200" />
-              <span>사전등록 바로가기</span>
+              <Download className="w-4 h-4 text-purple-200" />
+              <span>발표 자료집 다운로드 (PDF)</span>
             </a>
+            <a
+              href={meta.programPdfUrl}
+              download="KAMALL_2026_학술대회_일정표.pdf"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-900 font-bold text-xs sm:text-sm border border-purple-200 shadow-2xs transition-colors"
+            >
+              <Download className="w-4 h-4 text-purple-700" />
+              <span>일정표 PDF 다운로드</span>
+            </a>
+            <button
+              onClick={handlePrint}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs sm:text-sm border border-slate-200 shadow-2xs transition-colors"
+            >
+              <Printer className="w-4 h-4 text-slate-600" />
+              <span>일정표 인쇄</span>
+            </button>
           </div>
         </div>
 
@@ -228,7 +235,7 @@ export default function ProgramSection() {
                   기념촬영 및 중식 / 후원사 발표 세션
                 </h4>
                 <p className="text-xs text-amber-950 font-bold mt-1">
-                  • 후원사 발표: 플랭(Plang) & 아이오나(AIONA) & 마이티쳐코리아
+                  • 후원사 발표: 플랭(Plang) & 윈즈(WIN*Z)
                 </p>
               </div>
             </div>

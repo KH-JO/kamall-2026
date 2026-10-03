@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { conferenceConfig } from '@/config/conferenceConfig';
-import { Calendar, MapPin, Sparkles, ArrowRight, Clock, Train, ZoomIn, X, BookOpen, ExternalLink } from 'lucide-react';
+import { Calendar, MapPin, Sparkles, ArrowRight, Clock, Train, ZoomIn, X, BookOpen, ExternalLink, Download } from 'lucide-react';
 
 export default function HeroSection() {
   const { meta, registration } = conferenceConfig;
@@ -127,23 +127,31 @@ export default function HeroSection() {
               </div>
             </div>
 
-            {/* Action Buttons (Direct Google Form Link) */}
+            {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
               <a
                 href={registration.registerFormUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm sm:text-base font-black text-white bg-gradient-to-r from-purple-700 to-blue-600 hover:from-purple-800 hover:to-blue-700 rounded-xl shadow-md shadow-purple-700/20 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm sm:text-base font-black text-white bg-gradient-to-r from-purple-700 to-blue-600 hover:from-purple-800 hover:to-blue-700 rounded-xl shadow-md shadow-purple-700/20 hover:scale-[1.02] active:scale-[0.98] transition-all whitespace-nowrap"
               >
                 <span>온라인 사전 참가 등록하기</span>
                 <ExternalLink className="w-4 h-4 text-purple-200" />
               </a>
               <a
-                href="#program"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm sm:text-base font-bold text-slate-700 hover:text-slate-950 bg-white hover:bg-slate-100 rounded-xl border border-slate-200 transition-all shadow-xs"
+                href={meta.proceedingsPdfUrl}
+                download="KAMALL_2026_학술대회_발표자료집.pdf"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 text-sm sm:text-base font-bold text-purple-800 hover:text-purple-950 bg-purple-50 hover:bg-purple-100 rounded-xl border border-purple-200 transition-all shadow-xs whitespace-nowrap"
               >
-                <BookOpen className="w-4 h-4 text-purple-700" />
-                <span>프로그램 일정표 보기</span>
+                <Download className="w-4 h-4 text-purple-700" />
+                <span>발표 자료집 다운로드 (PDF)</span>
+              </a>
+              <a
+                href="#program"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 text-sm sm:text-base font-bold text-slate-700 hover:text-slate-950 bg-white hover:bg-slate-100 rounded-xl border border-slate-200 transition-all shadow-xs whitespace-nowrap"
+              >
+                <BookOpen className="w-4 h-4 text-slate-600" />
+                <span>프로그램 일정표</span>
               </a>
             </div>
 
@@ -165,10 +173,28 @@ export default function HeroSection() {
                 <span>포스터 크게보기</span>
               </div>
             </div>
-            <div className="mt-3.5 text-center">
+            <div className="mt-3.5 flex flex-col items-center gap-2 text-center">
               <span className="inline-block text-xs font-extrabold text-purple-900 bg-purple-100/70 border border-purple-200 px-3 py-1 rounded-full">
                 2026 KAMALL 공식 포스터 (클릭 시 확대)
               </span>
+              <div className="flex items-center gap-2">
+                <a
+                  href={meta.proceedingsPdfUrl}
+                  download="KAMALL_2026_학술대회_발표자료집.pdf"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-purple-200 text-purple-800 text-xs font-bold hover:bg-purple-50 transition-colors shadow-2xs"
+                >
+                  <Download className="w-3.5 h-3.5 text-purple-700" />
+                  <span>자료집(PDF)</span>
+                </a>
+                <a
+                  href={meta.programPdfUrl}
+                  download="KAMALL_2026_학술대회_일정표.pdf"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-700 text-xs font-bold hover:bg-slate-50 transition-colors shadow-2xs"
+                >
+                  <Download className="w-3.5 h-3.5 text-slate-600" />
+                  <span>일정표(PDF)</span>
+                </a>
+              </div>
             </div>
           </div>
 

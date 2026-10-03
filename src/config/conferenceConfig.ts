@@ -75,6 +75,8 @@ export const conferenceConfig = {
     organizer: "건국대학교 글로컬캠퍼스 (KONKUK UNIVERSITY GLOCAL CAMPUS)",
     logoUrl: "/images/kamall-logo.png",
     posterUrl: "/images/kamall-2026-poster.jpg",
+    proceedingsPdfUrl: "/files/KAMALL_2026_Proceedings.pdf",
+    programPdfUrl: "/files/KAMALL_2026_Program.pdf",
   },
 
   // 10월 가을 학회장 환영사 (신동광 회장님)
@@ -187,7 +189,7 @@ export const conferenceConfig = {
   part1Info: {
     room: "인문사회관(K6) 112호",
     moderator: "임관혁 (건국대학교 글로컬캠퍼스)",
-    sponsorSessionDetail: "기념촬영 및 중식 / 후원사 (플랭Plang & 아이오나AIONA & 마이티쳐코리아) 발표",
+    sponsorSessionDetail: "기념촬영 및 중식 / 후원사 (플랭Plang & 윈즈WIN*Z) 발표",
   },
 
   // 2부 학술발표 I (13:30 ~ 14:50) — 최종 수정 반영
@@ -204,7 +206,7 @@ export const conferenceConfig = {
           time: "13:30 ~ 13:50",
           title: "AI-인간 협업 제작 vs. 인간 제작 퀴즈의 성취도 및 인식의 비교",
           presenter: "오경미 (동덕여자대학교)",
-          discussant: "이지영 (성균관대학교)",
+          discussant: "이지영 (한양대학교)",
         },
         {
           time: "13:50 ~ 14:10",
@@ -343,13 +345,13 @@ export const conferenceConfig = {
         {
           time: "15:05 ~ 15:25",
           title: "AI 기반 말하기 앱의 교정적 피드백은 언제 매개되는가?",
-          presenter: "이지영 · 박유정 (성균관대학교)",
+          presenter: "이지영 (한양대학교) · 박유정 (성균관대학교)",
           discussant: "신혜원 (세종대학교)",
         },
         {
           time: "15:25 ~ 15:45",
-          title: "국제교류 협력 프로젝트 기반 초등학생 영어 의사소통 역량 향상 효과",
-          presenter: "장은정 · 이동주 (한국교원대학교)",
+          title: "온라인 국제교류 활동이 초등학생의 영어 의사소통 역량에 미치는 영향",
+          presenter: "장은정 (조치원대동초) · 이동주 (한국교원대학교)",
           discussant: "이혜진 (원광대학교)",
         },
         {
@@ -410,7 +412,7 @@ export const conferenceConfig = {
         },
         {
           time: "15:45 ~ 16:05",
-          title: "From Tool to Tutor: Exploring ChatGPT's Role in EFL Reading (Online)",
+          title: "From Tool to Tutor: Exploring ChatGPT's Role in EFL Reading and Translation (Online)",
           presenter: "Areum Lee (Hanshin University)",
           discussant: "김정태 (배재대학교)",
         },
@@ -427,20 +429,20 @@ export const conferenceConfig = {
         {
           time: "15:05 ~ 15:25",
           title: "한국 고등학교 EFL 학습자들의 성장 마인드셋과 영어 어휘지식의 관계: 어휘학습 자기조절능력의 매개효과",
-          presenter: "정다빈 · 이동주 (한국교원대학교)",
+          presenter: "정다빈 (조치원대동초) · 이동주 (한국교원대학교)",
           discussant: "황태연 (한국외국어대학교)",
         },
         {
           time: "15:25 ~ 15:45",
           title: "포용적 한국어 교육을 위한 교재 내 외모·연령 편향 분석 기준의 설계",
-          presenter: "김지학 (가천대학교)",
+          presenter: "김지학 (연세대학교)",
           discussant: "이송은 (동의대학교)",
         },
         {
           time: "15:45 ~ 16:05",
           title: "생성형 AI 시대 영어교사의 교수 실천과 정체성 재구성: GMAT(GenAI-Mediated Activity Theory) 기반 자문화기술지 연구",
           presenter: "석소연 (전북대학교)",
-          discussant: "김지학 (가천대학교)",
+          discussant: "김지학 (연세대학교)",
         },
       ]
     },
@@ -519,7 +521,7 @@ export const conferenceConfig = {
       { role: "사이트 체어", roleEng: "Site Chair", name: "이효신", affiliation: "건국대 글로컬", duties: "장소·강의실 확보 및 배치, 발표장 기자재 확인, 당일 현장 운영 총괄" },
       { role: "국제협력", roleEng: "International Affairs", name: "강주훈", affiliation: "한국교통대", duties: "해외 발표자·참가자 연락 및 영문 안내, 초청연사 일정 관리" },
       { role: "총무", roleEng: "General Affairs", name: "임관혁", affiliation: "건국대 글로컬", duties: "전체 준비 일정 관리, 사전등록 명단 관리, 명찰 제작, 등록데스크 운영" },
-      { role: "재무", roleEng: "Financial Affairs", name: "안유영", affiliation: "전남대", duties: "등록비 책정 및 입금자 관리, 수입·지출 관리 및 정산" },
+      { role: "재무", roleEng: "Financial Affairs", name: "안유영 · 이은진", affiliation: "한남대 · 건국대 글로컬", duties: "등록비 책정 및 입금자 관리, 수입·지출 관리 및 정산" },
       { role: "다과", roleEng: "Refreshment", name: "김미숙", affiliation: "경희대", duties: "다과·음료·중식 구성 및 업체 선정, 현장 다과 배치 및 관리" },
       { role: "후원", roleEng: "Fundraising", name: "백지운", affiliation: "중부대", duties: "후원기관·출판사 섭외 및 후원 요청, 부스 배치 협의, 로고 취합" },
       { role: "홈페이지 관리", roleEng: "Website Management", name: "조규희", affiliation: "경인교대", duties: "학술대회 공식 웹사이트 제작 및 최신 정보 실시간 업데이트" },
@@ -546,9 +548,8 @@ export const conferenceConfig = {
     { name: "HYPER LEARNING (하이퍼러닝)", tier: "후원사", category: "미래엔 디지털 학습 플랫폼", logoUrl: "/images/sponsors/hyperlearning.svg" },
     { name: "TWO PONDS (투폰즈)", tier: "후원사", category: "영어교육 전문 출판", logoUrl: "/images/sponsors/twoponds.svg" },
     { name: "Plang (플랭)", tier: "후원사", category: "AI 영어회화 에듀테크", logoUrl: "/images/sponsors/plang.svg" },
-    { name: "AIONA (아이오나)", tier: "후원사", category: "AI 언어교육 플랫폼", logoUrl: "/images/sponsors/aiona.svg" },
+    { name: "Beginz (비긴즈)", tier: "후원사", category: "AI 언어교육 및 솔루션", logoUrl: "/images/sponsors/beginz.svg" },
     { name: "WIN*Z (윈즈)", tier: "후원사", category: "AI 기술 & 에이전트 솔루션", logoUrl: "/images/sponsors/winz.png" },
-    { name: "마이티쳐코리아", tier: "스폰서 세션 발표", category: "원어민 화상영어 콘텐츠", logoUrl: "/images/sponsors/myteacher.svg" },
   ],
 
   // 문의처
