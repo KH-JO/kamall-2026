@@ -77,11 +77,11 @@ export default function Navbar() {
           <div className="hidden sm:flex items-center space-x-2 xl:space-x-2.5 flex-shrink-0">
             <a
               href={conferenceConfig.meta.proceedingsPdfUrl}
-              download="KAMALL_2026_학술대회_발표자료집.pdf"
+              download="KAMALL_2026_학술대회_프로시딩즈.pdf"
               className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-purple-700 bg-purple-50 hover:bg-purple-100 hover:text-purple-900 rounded-xl border border-purple-200 transition-all shadow-2xs whitespace-nowrap"
             >
               <Download className="w-3.5 h-3.5 text-purple-700" />
-              <span>자료집 다운로드</span>
+              <span>프로시딩즈 다운로드</span>
             </a>
             <a
               href="https://kamall.or.kr"
@@ -144,12 +144,12 @@ export default function Navbar() {
             <div className="pt-4 mt-2 border-t border-slate-100 flex flex-col gap-2">
               <a
                 href={conferenceConfig.meta.proceedingsPdfUrl}
-                download="KAMALL_2026_학술대회_발표자료집.pdf"
+                download="KAMALL_2026_학술대회_프로시딩즈.pdf"
                 onClick={() => setMobileMenuOpen(false)}
                 className="flex items-center justify-center gap-2 py-2.5 text-xs font-bold text-purple-700 bg-purple-50 border border-purple-200 rounded-xl text-center shadow-xs"
               >
                 <Download className="w-4 h-4 text-purple-700" />
-                <span>발표 자료집 (Proceedings PDF) 다운로드</span>
+                <span>프로시딩즈 (Proceedings PDF) 다운로드</span>
               </a>
               <a
                 href={conferenceConfig.registration.registerFormUrl}

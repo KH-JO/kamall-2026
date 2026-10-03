@@ -32,40 +32,42 @@ export default function ProgramSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header with Download/Print CTA */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8">
-          <div>
+        <div className="flex flex-col xl:flex-row xl:items-end justify-between gap-6 mb-8 pb-6 border-b border-slate-100">
+          <div className="max-w-3xl">
             <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-900 text-xs font-black mb-3 shadow-2xs">
               <Clock className="w-3.5 h-3.5 text-purple-700" />
               CONFERENCE PROGRAM & TIMETABLE
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-slate-950 tracking-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-black text-slate-950 tracking-tight break-keep leading-tight">
               2026 KAMALL 연례학술대회 일정표
             </h2>
-            <p className="mt-2 text-sm sm:text-base text-slate-600 font-medium">
-              일시: <span className="font-bold text-purple-900 font-mono">2026년 10월 17일 (토) 10:00 ~ 17:00</span> | 장소: <span className="font-bold text-slate-900">충주 건국대학교 글로컬캠퍼스 인문사회관(K6)</span>
+            <p className="mt-2.5 text-xs sm:text-sm md:text-base text-slate-600 font-medium break-keep leading-relaxed">
+              <span className="inline-block whitespace-nowrap">일시: <strong className="font-bold text-purple-900 font-mono">2026년 10월 17일 (토) 10:00 ~ 17:00</strong></span>
+              <span className="hidden sm:inline mx-2.5 text-slate-300">|</span>
+              <span className="inline-block whitespace-nowrap mt-1 sm:mt-0">장소: <strong className="font-bold text-slate-900">충주 건국대학교 글로컬캠퍼스 인문사회관(K6)</strong></span>
             </p>
           </div>
 
           <div className="flex flex-wrap items-center gap-2.5 flex-shrink-0">
             <a
               href={meta.proceedingsPdfUrl}
-              download="KAMALL_2026_학술대회_발표자료집.pdf"
-              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-purple-700 hover:bg-purple-800 text-white font-bold text-xs sm:text-sm shadow-xs transition-colors"
+              download="KAMALL_2026_학술대회_프로시딩즈.pdf"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-purple-700 hover:bg-purple-800 text-white font-bold text-xs sm:text-sm shadow-xs transition-colors whitespace-nowrap"
             >
               <Download className="w-4 h-4 text-purple-200" />
-              <span>발표 자료집 다운로드 (PDF)</span>
+              <span>프로시딩즈 다운로드 (PDF)</span>
             </a>
             <a
               href={meta.programPdfUrl}
               download="KAMALL_2026_학술대회_일정표.pdf"
-              className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-900 font-bold text-xs sm:text-sm border border-purple-200 shadow-2xs transition-colors"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-900 font-bold text-xs sm:text-sm border border-purple-200 shadow-2xs transition-colors whitespace-nowrap"
             >
               <Download className="w-4 h-4 text-purple-700" />
               <span>일정표 PDF 다운로드</span>
             </a>
             <button
               onClick={handlePrint}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs sm:text-sm border border-slate-200 shadow-2xs transition-colors"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs sm:text-sm border border-slate-200 shadow-2xs transition-colors whitespace-nowrap"
             >
               <Printer className="w-4 h-4 text-slate-600" />
               <span>일정표 인쇄</span>

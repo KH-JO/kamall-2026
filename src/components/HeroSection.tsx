@@ -140,11 +140,11 @@ export default function HeroSection() {
               </a>
               <a
                 href={meta.proceedingsPdfUrl}
-                download="KAMALL_2026_학술대회_발표자료집.pdf"
+                download="KAMALL_2026_학술대회_프로시딩즈.pdf"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 text-sm sm:text-base font-bold text-purple-800 hover:text-purple-950 bg-purple-50 hover:bg-purple-100 rounded-xl border border-purple-200 transition-all shadow-xs whitespace-nowrap"
               >
                 <Download className="w-4 h-4 text-purple-700" />
-                <span>발표 자료집 다운로드 (PDF)</span>
+                <span>프로시딩즈 다운로드 (PDF)</span>
               </a>
               <a
                 href="#program"
@@ -180,11 +180,11 @@ export default function HeroSection() {
               <div className="flex items-center gap-2">
                 <a
                   href={meta.proceedingsPdfUrl}
-                  download="KAMALL_2026_학술대회_발표자료집.pdf"
+                  download="KAMALL_2026_학술대회_프로시딩즈.pdf"
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-purple-200 text-purple-800 text-xs font-bold hover:bg-purple-50 transition-colors shadow-2xs"
                 >
                   <Download className="w-3.5 h-3.5 text-purple-700" />
-                  <span>자료집(PDF)</span>
+                  <span>프로시딩즈(PDF)</span>
                 </a>
                 <a
                   href={meta.programPdfUrl}
